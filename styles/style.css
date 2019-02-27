@@ -6,3 +6,34 @@
 a {
 	color:#C5A5F4;
 }
+
+h2 {
+	color:#C5A5F4;
+	padding-left: 10px;
+}
+
+
+.containers {
+	height:100vh;
+	display:block;
+	position:relative;
+	z-index:0;
+}
+
+#mainNav {
+	background-color: #C5A5F4;
+}
+
+#mainNav a {
+	color:white;
+}
+
+#mainNav ul li a:hover{
+	color: white;
+	background-color: #6D2AAF;
+}
+
+.active{
+	color: white;
+	background-color:#6D2AAF;
+}
