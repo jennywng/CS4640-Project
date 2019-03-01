@@ -11,7 +11,7 @@
             
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/login-style.css">
+        <link rel="stylesheet" href="styles/user-home-style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
  
     </head>
@@ -20,36 +20,43 @@
 
 
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
-                <a class="navbar-brand" href="#home">
-                  <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
-                </a>
+            <a class="navbar-brand" href="#home">
+              <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
+            </a>
         
                 <!-- make a hamburger menu when window is narrow -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                  <span class="navbar-toggler-icon">
-                      <i class="fas fa-bars"></i>
-                  </span>
-                </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars"></i>
+                </span>
+            </button>
                 
                 <!-- collapse class available in Bootstrap, hide upon collapse -->
-                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                  <ul class="nav nav-pills">
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+                <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link" id="home-link" href="#home">Profile</a>
+                      <a class="nav-link" id="home-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="about-link" href="#about">About</a>
+                      <a class="nav-link" id="about-link" href="#">Search</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="team-link" href="#team">Meet the Team</a>
-                    </li>  
-                    <li class="nav-item"> 
-                        <a class="nav-link" id="contact-link" href="#contact">Contact</a>
-                      </li>            
-                  </ul>
-                </div>  
-            </nav>
+                      <a class="nav-link" id="about-link" href="#">Reviews</a>
+                    </li>         
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>  
+        </nav>
         
+        <div class="main">
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search for restrooms near...">
+        </div>
+        </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/login.js"></script>

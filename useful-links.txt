@@ -1,0 +1,5 @@
+star/user rating for bathroom profile
+https://www.w3schools.com/howto/howto_css_star_rating.asp
+https://www.w3schools.com/howto/howto_css_user_rating.asp
+range slider: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+https://www.gungorbudak.com/blog/2018/12/12/bootstrap-4-search-box-with-search-icon/
