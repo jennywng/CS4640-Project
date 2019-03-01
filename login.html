@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/login-style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+ 
     </head>
 
     <body onload="setFocus('name')" class="login-body">
@@ -20,16 +22,18 @@
                 <form class="register-form">
                     <input class="first" id="name" type="text" placeholder="Name"/>
                     <input type="text" placeholder="Email"/>
-                    <input type="text" placeholder="Password"/>
+                    <input type="password" placeholder="Password"/>
+                    <input type="password" placeholder="Retype Password"/>
                     <button>Register</button>
                     <p class="message">Already Registered? <a href="#">Sign In</a></p>
                 </form>
 
-                <form class="login-form">
-                    <input class="first" id="email" type="text" placeholder="Email"/>
-                    <input type="text" placeholder="Password"/>
-                    <button>Login</button>
+                <form class="login-form" name="loginform" onSubmit="return validateForm();" action="user-home.html" method="post">
+                    <input class="first" name="email" id="email" type="text" placeholder="Email"/>
+                    <input type="password" name="pword" placeholder="Password"/>
+                    <input type="submit" id="login-btn" value=Login>
                     <p class="message">Not registered? <a href="#">Create an Account</a></p>
+                    <p id="login-note"></p>
                 </form>
             </div>
         </div>
