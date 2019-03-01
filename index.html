@@ -25,11 +25,11 @@
         
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#mainNav" data-offset="0">
 
     <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
         <a class="navbar-brand" href="#home">
-          <img src="images/FLUSH_logo.PNG" width="10" height="10" class="d-inline-block align-top" alt="logo">
+          <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
         </a>
 
         <!-- make a hamburger menu when window is narrow -->
@@ -39,34 +39,29 @@
         
         <!-- collapse class available in Bootstrap, hide upon collapse -->
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-          <ul class="navbar-nav">
+          <ul class="nav nav-pills">
             <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
+              <a class="nav-link" id="home-link" href="#home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
+              <a class="nav-link" id="about-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#team">Meet the Team</a>
-            </li>              
+              <a class="nav-link" id="team-link" href="#team">Meet the Team</a>
+            </li>  
             <li class="nav-item"> 
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
+                <a class="nav-link" id="contact-link" href="#contact">Contact</a>
+              </li>            
           </ul>
         </div>  
     </nav>
-
-    <!-- # means don't go anywhere, stay on the same page, open the current page
- -->
-    <!-- jumbotron at the top of the screen, holds things important for the page -->
   
-    <div class="containers" id="#home">
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" id="home">
       <div class="container">
         <h1>Welcome to FLUSHD</h1>
         <p>Emergency? We've got you covered</p>
         <hr class="my-4">
-        <p>FLUSHD is a web application where users can review and search for restrooms near them</p>
+        <p>FLUSHD is a web application where users can search for and review restrooms near them.</p>
         <p>
           <a class="btn btn-primary btn-lg" href="login.html" role="button">Login or Register</a>
         </p>
@@ -74,15 +69,13 @@
     </div>
     </div>
 
-    <div class="containers">
-    <section id="about">
+    <div class="containers" id="about">
+    <section>
       <h2>About</h2>
       <p>Hello</p>
     </section>
-    </div>  
+    </div>
 
-    <!-- use a grid system to display 3 columns -->
-    <!-- bootstrap requires you to put everything in containers so it knows the boundaries -->
     <div class="containers" id="team">
       <section>
       <h2>Meet the Team</h2>
@@ -113,10 +106,9 @@
     
     
 
-    <script src="js/scroll.js"></script>    
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> -->
-    <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     
     <!-- Bootstrap Javascript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
