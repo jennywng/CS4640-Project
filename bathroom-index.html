@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+    <head>
         <meta charset="utf-8">
     
         <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
@@ -16,10 +16,8 @@
  
     </head>
 
-
-
-<body>
-    <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
               <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
             </a>
@@ -51,56 +49,34 @@
             </div>  
         </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="image-container">
-                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                    <div class="imageupload">
-                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change"/>
-                        <input type="file" style="display: none;" id="profilePicture" name="file"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">User Name: </label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        Something
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">Reviews Made: </label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        Something
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">Favorite Restrooms:</label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        Something
-                    </div>
-                </div>
-                <hr />
-            </div>
+        
+        <div class="main">
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search for restrooms near...">
         </div>
-    </div>
-    <a class="btn" href="index.html">Logout</a>
+        </div>
 
-</body>
+        <div class="container">
+            <p>Review 1</p>
+        </div> 
 
+        <div class="container">
+            <p>Review form</p>
+            <form>
+                <input type="submit">
+            </form>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/autofocus.js"></script>
+
+    </body>
+
+    
 </html>
-
-
-
-
 
 
 

@@ -25,14 +25,14 @@
                     <input type="password" placeholder="Password"/>
                     <input type="password" placeholder="Retype Password"/>
                     <button>Register</button>
-                    <p class="message">Already Registered? <a href="#">Sign In</a></p>
+                    <p class="message">Already Registered? <a onclick="setFocus('email')" href="#">Sign In</a></p>
                 </form>
 
                 <form class="login-form" name="loginform" onSubmit="return validateForm();" action="user-home.html" method="post">
                     <input class="first" name="email" id="email" type="text" placeholder="Email"/>
                     <input type="password" name="pword" placeholder="Password"/>
                     <input type="submit" id="login-btn" value=Login>
-                    <p class="message">Not registered? <a href="#">Create an Account</a></p>
+                    <p class="message">Not registered? <a href="#" onclick="setFocus('name')">Create an Account</a></p>
                     <p id="login-note"></p>
                 </form>
             </div>
@@ -46,6 +46,4 @@
 
     
 </html>
-
-
 
