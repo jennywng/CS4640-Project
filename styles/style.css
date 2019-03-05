@@ -17,6 +17,12 @@ h2 {
 	padding-left: 10px;
 }
 
+h3 {
+	font-family: "Roboto", sans-serif;
+	color:#C5A5F4;
+	padding-left: 10px;
+}
+
 h4{
 	position: relative;
 	padding-left: 15px;
@@ -95,7 +101,7 @@ html {
   .col-10 { width: 83.33%; }
   .col-11 { width: 91.66%; }
   .col-12 { width: 100%; }
-  }
+  
   
   
   /* set these columns to float left, and have a padding */
@@ -170,7 +176,8 @@ html {
   }
   
   
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
 	#fadeshow {
 	  display: none;
 	}
+}
