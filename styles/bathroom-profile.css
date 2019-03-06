@@ -11,3 +11,11 @@
 .checked {
     color:rgb(241, 211, 35);
 }
+
+.left-col {
+    text-align: left;
+}
+
+.right-col {
+    text-align: right;
+}
