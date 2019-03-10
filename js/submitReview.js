@@ -1,55 +1,53 @@
-//reviewFormSubmitBtn
+var rating;
 $(':radio').change(function() {
-    var rating = this.value;
+    rating = this.value;
     console.log('New star rating: ' + this.value);
 });
 
 
 
 document.getElementById('reviewFormSubmitBtn').onclick = function() {
-    console.log('calling review button')
+    console.log('calling review button');
     let reviewBody = document.createElement('div');
-    let reviewer = document.createElement('h5').setAttribute('class', 'mt-0');
-    let star = document.createElement('span').setAttribute('class', 'fas fa-star checked');
-    let number = document.createElement('span').setAttribute('class', 'avg-rating');
+    let reviewer = document.createElement('h5');
+    let star = document.createElement('span');
+    let number = document.createElement('span');
     let reviewText = document.createElement('p');
+    let reviewText2 = document.createElement('p');
+    let line = document.createElement('hr');
+    line.setAttribute('class', 'my-4');
+
+
+    number.setAttribute('class', 'avg-rating');
+    reviewer.setAttribute('class', 'mt-0');
+    star.setAttribute('class', 'fas fa-star checked');
 
 
     number.innerHTML = rating;
-    reviewer.innerHTML = 'username'
-    reviewText.innerHTML = document.getElementById(review);
-    console.log(reviewText.innerHTML);
-    console.log(star.innerHTML);
+    reviewer.innerHTML = 'username';
+    reviewText.innerHTML = document.getElementById('review-text').value;
 
-    reviewBody.setAttribute('class', 'media');
+    reviewBody.setAttribute('class', 'media-body');
     reviewBody.append(reviewer);
     reviewBody.append(star);
     reviewBody.append(number);
     reviewBody.append(reviewText);
+    reviewBody.append(reviewText2);
 
-    let img = document.createElement('img').setAttribute('class', 'align-self-start mr-3').setAttribute('src', 'http://placehold.it/150x150');
 
+    let img = document.createElement('img')
+    img.setAttribute('src', 'http://placehold.it/150x150');
+    img.setAttribute('class', 'align-self-start mr-3');
+    
 
 
     let newReview = document.createElement('div');
     newReview.setAttribute('class', 'media');
     newReview.append(img);
     newReview.append(reviewBody);
-    // newReview.action = 'bathroom-profile.html';
-    // newReview.method='GET';
+
+    document.getElementById('reviews').append(line);
     document.getElementById('reviews').append(newReview);
 
 
 };
-
-// // submitBtn.addEventListener(onclick);
-// let form = document.createElement('form');
-// form.action = 'https://google.com/search';
-// form.method = 'GET';
-
-// form.innerHTML = '<input name="q" value="test">';
-
-// // the form must be in the document to submit it
-// document.body.append(form);
-
-// form.submit();
