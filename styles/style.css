@@ -68,27 +68,45 @@ h4{
 	background-color: #6D2AAF;
 }
 
-/* .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	color: white
+#mainNav li.active > a {
 	background-color: #6D2AAF;
-} */
+}
 
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  color: #ffffff;
+  /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); */
+  background-color: #6D2AAF;
+}
 
 body {
 	position:relative;
+	font-family: "Roboto", sans-serif;
 }
 
 html {
 	scroll-behavior: smooth;
 }
 
-.primary-footer {
-	font-family: "Roboto", sans-serif;
-	background-color: rgb(105, 105, 105);
-	color: white;
-	font-size: 14px;
-	padding-bottom: 44px;
-	padding-top: 44px;
+/**************************************/
+/*   scrollbar  */
+::-webkit-scrollbar {
+	width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888; 
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
 }
 
 
@@ -116,8 +134,7 @@ html {
   .col-11 { width: 91.66%; }
   .col-12 { width: 100%; }
   
-  
-  
+
   /* set these columns to float left, and have a padding */
   [class*="col-"] {
 	float: left;
