@@ -22,7 +22,7 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
-    </head>
+</head>
 
 
 
@@ -58,52 +58,35 @@
                 </form>
             </div>  
     </nav>
-
+    
     <hr class="my-4">
 
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="image-container">
-                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                    <div class="imageupload">
-                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change"/>
-                        <input type="file" style="display: none;" id="profilePicture" name="file"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">User Name: </label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        jennywang
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">Reviews Made: </label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        ...
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-5">
-                        <label style="font-weight:bold;">Favorite Restrooms:</label>
-                    </div>
-                    <div class="col-md-8 col-6">
-                        ...
-                    </div>
-                </div>
-                <hr />
+        <form>
+            <div class="form-group">
+                    <label>Upload Profile Picture</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
-        </div>
-        <a class="btn" href="edit-profile.html">Edit Profile</a>
-        <br><br>
-        <a class="btn" href="index.html" style="background-color: red">Logout</a>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="jrw3mx@virginia.edu">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="jennywang">
+                </div>
+            </div>
+            <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>   
+        </form>
     </div>
     
 
