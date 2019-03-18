@@ -81,25 +81,27 @@
     </div>
 
     <div class="containers" id="about">
-    <section>
+    <section class="container">
       <h2>About</h2>
-      <p>Hello</p>
+      <p>A quintessential problem for people around the world is finding a restroom to use in a time of need. 
+        For most people, bathrooms are not a factor of consideration when they travel somewhere. Then, when the need arises, they are stuck in a panic.
+        Well panic no more, for Flushd helps you find the closest, best rated bathrooms to satisfy your bodily functions. 
+      </p>
     </section>
     </div>
 
     <div class="containers" id="team">
-      <section>
+      <section class="container">
       <h2>Meet the Team</h2>
       <div class="container">
       <div class="row">
-        <!-- 2 columns that in total add up to 12 so md-6 -->
         <div class="col-md-6">
-          <h3>Jenny Wang</h3>
-          <p>Description...</p>
+          <h4>Jenny Wang</h4>
+          <p>Jenny is a 3rd year student at the University of Virginia studying Computer Science. Besides software engineering, she loves cooking food, doing yoga, and her 2 cats. </p>
           <img src="images/rsz_peach.jpg" width="60%" height="40%" alt="jenny"/>
         </div>
         <div class="col-md-6">
-          <h3>Amber Liu</h3>
+          <h4>Amber Liu</h4>
           <p>Description...</p>
           <img src="images/amber_profile.jpg" width="60%" height="40%" alt="amber"/>
         </div>
@@ -109,10 +111,51 @@
     </div>
 
     <div class="containers" id="contact">
-    <section>
-      <h2>Contact Us</h2>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-6"> 
+            <h2><strong>Don't Be A Stranger</strong></h2>
+            <h3 style="color:black">Say Hello</h3>
+            <hr>
+            <br>
+            <p style="color:gray; size: 1px">Need help?</p>
+            <p>jrw3mx@virginia.edu</p>
+            <p>al7bf@virginia.edu</p>
+            <hr>
+            <br>
+            <p style="color:gray; size: 1px">Wanna chat?</p>
+            <p>(123) 456 - 7890</p>
+        </div>
+        <div class="col-md-6">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" id="name" required="">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" id="email" required="">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" class="form-control" id="subject">
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" class="form-control" id="message" rows="5" required=""></textarea>
+              </div>
+            
+            <button class="btn btn-primary">Submit</button>
+          </form>  
+        </div>
+      </div>
+
     </section>
     </div>
+
+
+
 
 
     </footer>
@@ -150,7 +193,7 @@
               <ul class="social-icons">
                 <li><a class="facebook" href="#"><i class="fab fa-facebook-square"></i></i></a></li>
                 <li><a class="twitter" href="#"><i class="fab fa-twitter-square"></i></a></li>
-                <li><a class="github" href="#"><i class="fab fa-github-square"></i></a></li>
+                <li><a class="github" href="https://github.com/jennywng/CS4640-Project" target="_blank"><i class="fab fa-github-square"></i></a></li>
                 <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>   
               </ul>
             </div>
