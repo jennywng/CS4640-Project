@@ -51,6 +51,14 @@ require_once "php/config.php";
 $email = $pwd = '';
 $login_err = '';
 
+session_start();
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: user-home.html");
+    exit;
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     if (isset($_POST['email']) && isset($_POST['pwd'])) {
