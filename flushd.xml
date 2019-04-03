@@ -1,0 +1,22 @@
+<reviews>
+    <review>
+        <user>hamburger</user>
+        <bathroom>Rice Hall 1st Floor</bathroom>
+        <rating>4.0</rating>
+        <description>Really new and clean, the stalls are spacious and the toilets automatically flush</description>
+    </review>
+    <review>
+        <user>jenniee</user>
+        <bathroom>Rice Hall 1st Floor</bathroom>
+        <rating>3.5</rating>
+        <description>Had to wait a long time in line, but overall good experience</description>
+    </review>
+        <user>wutidk</user>
+        <bathroom>Rice Hall 1st Floor</bathroom>
+        <rating>5.0</rating>
+        <description>So blessed. so moved. so grateful. cant believe this is my life.  </description>
+    </review>
+</review>
+
+
+
