@@ -36,6 +36,7 @@
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .form button, #login-btn {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -51,7 +52,7 @@
     cursor: pointer;
 }
 
-.form button, #register-btn {
+#register-btn {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;

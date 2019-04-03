@@ -25,37 +25,40 @@
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/login.js"></script>
+
     </head>
 
     <body class="login-body">
         <div class="login-page">
             <div class="form">
-                <form class="login-form" id="loginform" name="loginform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form class="register-form" id="registerform" name="registerform" onsubmit="validateRegister()" method="post">
+                    <input class="first" id="fname" name ="first_name" type="text" placeholder="First Name"/>
+                    <input class="first" id="lname" name ="last_name" type="text" placeholder="Last Name"/>
+                    <input type="text" name ="r_email" placeholder="Email"/>
+                    <input type="password" name ="r_pwd" placeholder="Password"/>
+                    <input type="password" name ="r_pwd_retype" placeholder="Retype Password"/>
+                    <input type="submit" id="register-btn" value=Register>
+                    <p class="message">Already Registered? <a href="#">Sign In</a></p>
+                    <p id="register-note"></p>
+                </form>
+
+                <form class="login-form" id="loginform" name="loginform" onsubmit="validateLogin()" method="post">
                     <input class="email" name="l_email" id="l_email" type="text" placeholder="Email"/>
                     <input type="password" name="l_pwd" id="l_pwd" placeholder="Password"/>
                     <input type="submit" id="login-btn" value=Login>
-                    <p class="message">Not registered? <a href="register.php">Create an Account</a></p>
+                    <p class="message">Not registered? <a href="#">Create an Account</a></p>
                     <p id="login-note"></p>
                 </form>
             </div>
-        </div>    
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/login.js"></script>
+    
     </body>
 </html>
 
 
 
-<?php
-
-require_once "php/config.php";
-
-$email = $pwd = '';
-$login_err = '';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    session_start();
-    if (isset($_POST['email']) && isset($_POST['pwd'])) {
-        echo "logged in";
-    }
-}
-
-?>

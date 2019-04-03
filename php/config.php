@@ -9,7 +9,7 @@ $dsn = "mysql:host=$host;dbname=$dbname";
 
 try {
     $db = new PDO($dsn, $username, $password);
-    echo "connected";
+    // echo "connected";
     /*
     PDO obj
     */
