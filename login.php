@@ -30,12 +30,14 @@
         <div class="login-page">
             <div class="form">
                 <form class="register-form">
-                    <input class="first" id="name" type="text" placeholder="Name"/>
+                    <input class="first" id="name" type="text" placeholder="First Name"/>
+                    <input class="first" id="name" type="text" placeholder="Last Name"/>
                     <input type="text" placeholder="Email"/>
                     <input type="password" placeholder="Password"/>
                     <input type="password" placeholder="Retype Password"/>
-                    <button>Register</button>
+                    <input type="submit" id="register-btn" value=Register>
                     <p class="message">Already Registered? <a onclick="setFocus('email')" href="#">Sign In</a></p>
+                    <p id="register-note"></p>
                 </form>
 
                 <form class="login-form" name="loginform" onSubmit="return validateForm();" action="user-home.html" method="post">
@@ -56,4 +58,11 @@
 
     
 </html>
+
+
+<?php>
+    require_once "php/config.php";
+
+    $usrname = $pwd = $confirm_pwd = '';
+<?>
 
