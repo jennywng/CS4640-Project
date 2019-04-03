@@ -2,8 +2,8 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 03, 2019 at 11:11 PM
+-- Host: localhost
+-- Generation Time: Apr 04, 2019 at 12:50 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,19 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bathroom`
---
-
-CREATE TABLE `bathroom` (
-  `ID` int(6) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `location` varchar(200) NOT NULL,
-  `desc` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `bathrooms`
 --
 
@@ -47,6 +34,22 @@ CREATE TABLE `bathrooms` (
   `description` varchar(300) NOT NULL,
   `location` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bathrooms`
+--
+
+INSERT INTO `bathrooms` (`ID`, `title`, `description`, `location`) VALUES
+(0, 'Olsson 1st Floor', 'wide spacious gender neutral bathroom but only one stall', '151 Engineer\'s Way, Charlottesville, VA 22903'),
+(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904'),
+(2, 'Rice Hall 1st Floor', 'Clean, fairly open space bathroom with 4 stalls.', '85 Engineer\'s Way, Charlottesville, VA 22903'),
+(3, 'Newcomb Dining', 'Only accessible after swiping in, clean and new restroom stalls', '180 McCormick Rd, Charlottesville, VA 22903'),
+(4, 'Clark 1st Floor', 'Nice bathroom but very busy when classes end.', '291 McCormick Rd, Charlottesville, VA 22903'),
+(5, 'New Cabell 4th Floor', 'nice and clean bathroom with multiple stalls', '1605 Jefferson Park Ave, Charlottesville, VA 22903'),
+(6, 'Bryant Hall 4th floor', 'Elegant and comfortable space, accessible in student lounge when you have interviews', '1815 Stadium Rd, Charlottesville, VA 22903'),
+(7, 'Monroe Hall entrance', 'old and cramped stall, can\'t even turn around in the stall', 'Monroe Hall Charlottesville, VA 22903'),
+(8, 'Clemons Library 2nd Floor', 'new, clean and very modern look with provided tampons/pads in girl\'s bathroom!', 'Newcomb Rd N, Charlottesville, VA 22904'),
+(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904');
 
 -- --------------------------------------------------------
 
@@ -92,14 +95,21 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `firstname`, `lastname`, `username`, `email`, `pwd`, `reg_date`, `admin`) VALUES
+(1, 'Amber', 'Liu', '', 'reamber.liu@gmail.com', '$2y$10$5DZmztcMUK8viAxtnHamauVfR6IDXMuKXThj5nVtPX2vMj2UW/eGa', '2019-04-03 22:49:13', 0);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `bathroom`
+-- Indexes for table `bathrooms`
 --
-ALTER TABLE `bathroom`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `bathrooms`
+  ADD UNIQUE KEY `ID` (`ID`);
 
 --
 -- Indexes for table `reviews`
@@ -124,12 +134,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `bathroom`
---
-ALTER TABLE `bathroom`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
@@ -145,7 +149,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
