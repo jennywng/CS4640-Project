@@ -14,7 +14,7 @@ if ($conn -> connect_error) {
 
 
 
-$get_all_bathrooms = "SELECT ID, title, location, description from bathrooms";
+$get_all_bathrooms = "SELECT ID, title, location, description AvgRating, from bathrooms";
 
 
 $result = $conn->query($get_all_bathrooms);
@@ -24,7 +24,7 @@ if ($result -> num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         extract($row);
 
-        $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 'description'=>$description);
+        $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 'description'=>$description, 'avgRating'=>$AvgRating);
     }
 
     $encode_export = array('all_bathrooms_data'=>$export);

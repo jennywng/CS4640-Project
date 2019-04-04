@@ -1,4 +1,4 @@
-function createBathroomDiv(id, title, desc, loc) {
+function createBathroomDiv(id, title, desc, loc, rating) {
     console.log("creating bathroom: " + id);
     var $content = $("<div>", {class: "bathroomContainer"});
     var $div = $("<div>", {class: 'media'});
@@ -18,7 +18,7 @@ function createBathroomDiv(id, title, desc, loc) {
 
     var $pooSpan = $("<span>", {class: "fas fa-poo checked"});
     var $ratingSpan = $("<span>", {class: "rating"});
-    $ratingSpan.text("  0");
+    $ratingSpan.text("  " + rating);
     $pooSpan.appendTo($divBody);
     $ratingSpan.appendTo($divBody);
 
@@ -55,7 +55,7 @@ function getBathrooms() {
             var bathrooms = data.all_bathrooms_data;
             console.log(bathrooms);
             bathrooms.forEach((item) => {
-                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location);
+                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.rating);
                 $bathroomListEle.append(bath);
               });
 

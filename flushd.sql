@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2019 at 11:11 PM
+-- Generation Time: Apr 05, 2019 at 12:22 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,19 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bathroom`
---
-
-CREATE TABLE `bathroom` (
-  `ID` int(6) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `location` varchar(200) NOT NULL,
-  `desc` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `bathrooms`
 --
 
@@ -45,8 +32,25 @@ CREATE TABLE `bathrooms` (
   `ID` int(6) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` varchar(300) NOT NULL,
-  `location` varchar(200) NOT NULL
+  `location` varchar(200) NOT NULL,
+  `AvgRating` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bathrooms`
+--
+
+INSERT INTO `bathrooms` (`ID`, `title`, `description`, `location`, `AvgRating`) VALUES
+(0, 'Olsson 1st Floor', 'wide spacious gender neutral bathroom but only one stall', '151 Engineer\'s Way, Charlottesville, VA 22903', NULL),
+(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904', NULL),
+(2, 'Rice Hall 1st Floor', 'Clean, fairly open space bathroom with 4 stalls.', '85 Engineer\'s Way, Charlottesville, VA 22903', NULL),
+(3, 'Newcomb Dining', 'Only accessible after swiping in, clean and new restroom stalls', '180 McCormick Rd, Charlottesville, VA 22903', NULL),
+(4, 'Clark 1st Floor', 'Nice bathroom but very busy when classes end.', '291 McCormick Rd, Charlottesville, VA 22903', NULL),
+(5, 'New Cabell 4th Floor', 'nice and clean bathroom with multiple stalls', '1605 Jefferson Park Ave, Charlottesville, VA 22903', NULL),
+(6, 'Bryant Hall 4th floor', 'Elegant and comfortable space, accessible in student lounge when you have interviews', '1815 Stadium Rd, Charlottesville, VA 22903', NULL),
+(7, 'Monroe Hall entrance', 'old and cramped stall, can\'t even turn around in the stall', 'Monroe Hall Charlottesville, VA 22903', NULL),
+(8, 'Clemons Library 2nd Floor', 'new, clean and very modern look with provided tampons/pads in girl\'s bathroom!', 'Newcomb Rd N, Charlottesville, VA 22904', NULL),
+(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,6 +66,17 @@ CREATE TABLE `reviews` (
   `rDesc` varchar(300) NOT NULL,
   `rating` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`ID`, `uID`, `bID`, `title`, `rDesc`, `rating`) VALUES
+(1, 2, 2, 'Blegh', 'Very small and old. Decently clean. Also if you are on the upper floors, you must go downstairs to use this bathroom as its the only woman\'s bathroom in the building', 2),
+(2, 2, 2, 'Inconvenient', 'Hate how its the only one in the whole building. Also old and yucky', 2),
+(3, 1, 2, 'Ew', 'Hate it', 1),
+(4, 2, 9, 'Great', 'Nice and clean, although the AC is on very strong and it can be cold. One of the automatic sinks is broken, it stays on for a long time even when you move your hands away.', 4),
+(5, 2, 8, 'Great Bathroom', 'Recently renovated, its very clean and nice looking, if a bit dim lighting wise. Lots of stalls, there\'s never a line. ', 5);
 
 -- --------------------------------------------------------
 
@@ -92,14 +107,24 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `firstname`, `lastname`, `username`, `email`, `pwd`, `reg_date`, `admin`) VALUES
+(1, 'Amber', 'Liu', '', 'reamber.liu@gmail.com', '$2y$10$5DZmztcMUK8viAxtnHamauVfR6IDXMuKXThj5nVtPX2vMj2UW/eGa', '2019-04-03 22:49:13', 0),
+(2, 'Jenny', 'Wang', '', 'jenny.wang9812@gmail.com', '$2y$10$x.QQtK6w.LiU4DCVKdW7huPsdQkCcz4aedpnrwAhcufZuXw5ubWvW', '2019-04-04 20:10:31', 0),
+(3, 'wuxin', 'zeng', '', 'wz4up@virgnia.edu', '$2y$10$E3OLkB6TXMdl.KDeEMAR0eqZfRMPy.qoABqd5fh/enUwfG2S0X9VO', '2019-04-04 22:02:07', 0),
+(4, 'wuxin', 'zeng', '', 'angelinezeng1997@gmail.com', '$2y$10$EoG7rzFFvd3I9G.H8tMvP.ribpMEdjZlfdayGwdhl77v2gdDu3ymC', '2019-04-04 22:03:10', 0);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `bathroom`
+-- Indexes for table `bathrooms`
 --
-ALTER TABLE `bathroom`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `bathrooms`
+  ADD UNIQUE KEY `ID` (`ID`);
 
 --
 -- Indexes for table `reviews`
@@ -124,16 +149,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `bathroom`
---
-ALTER TABLE `bathroom`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -145,7 +164,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
