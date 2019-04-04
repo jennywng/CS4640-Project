@@ -97,9 +97,17 @@
 #login-note {
     font-family: "Roboto", sans-serif;
     color:red;
+    font-size: 15px;
 }
 
-#register-note {
+.register-note {
     font-family: "Roboto", sans-serif;
     color:red;
+    font-size: 15px;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color:red;
+    font-size: 15px;
 }

@@ -21,8 +21,7 @@
 //     echo "<p>Error message: $error_message </p>";
 // }
 
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+/* Database credentials */
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
@@ -30,7 +29,7 @@ define('DB_NAME', 'flushd');
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-echo "connected";
+// echo "connected";
  
 // Check connection
 if($link === false){
