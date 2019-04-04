@@ -24,9 +24,11 @@
         <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
+
+        <script src="js/bathroom-index.js"></script>
     </head>
 
-    <body>
+    <body onload="getBathrooms()">
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
               <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
@@ -62,60 +64,12 @@
         
         <hr class="my-4">
 
-<div class = "container" id = "bathroomlist">
+<div class = "container" id ="bathrooms">
     <h2>Bathrooms Near Me</h2>
     <div class="row">
-    <div class="col-sm-8">
-        <div class="media paper-towel">
-            <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-                <a href="bathroom-profile.html"><h5 class="mt-0">Rice Hall First Floor</h5></a>
-                <span class="fas fa-poo checked"></span><span class="rating"> 3.47 </span>
-                <p>85 Engineer's Way, Charlottesville, VA 22903</p>
-            </div>
-        </div>
-        <hr class="my-4">
+        <div class="col-sm-8" id="bathroomlist">
 
-        <div class="media paper-towel">
-            <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-                <a href="#"><h5 class="mt-0">Physics Building Third Floor</h5></a>
-                <span class="fas fa-poo checked"></span><span class="rating"> 1.5 </span>
-                <p>382 McCormick Rd, Charlottesville, VA 22904</p>
-            </div>
         </div>
-        <hr class="my-4">
-
-        <div class="media paper-towel">
-            <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-                <a href="#"><h5 class="mt-0">Physics Building First Floor</h5></a>
-                <span class="fas fa-poo checked"></span><span class="rating"> 1.5 </span>
-                <p>382 McCormick Rd, Charlottesville, VA 22904</p>
-            </div>
-        </div>
-        <hr class="my-4">
-
-        <div class="media paper-towel">
-            <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-                <a href="#"><h5 class="mt-0">Olsson First Floor</h5></a>
-                <span class="fas fa-poo checked"></span><span class="rating"> 4.62 </span>
-                <p>151 Engineer's Way, Charlottesville, VA 22903</p>
-            </div>
-        </div>
-        <hr class="my-4">
-
-        <div class="media paper-towel gender-neutral">
-            <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-                <a href="#"><h5 class="mt-0">PLSB First Floor</h5></a>
-                <span class="fas fa-poo checked"></span><span class="rating"> 4.53 </span>
-                <p>90 Geldard Dr, Charlottesville, VA 22903</p>
-            </div>
-        </div>
-        <hr class="my-4">
-    </div>
 
         <div class="col-sm-4">
             <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 350px">
@@ -161,6 +115,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/checkbox.js"></script>
+        <script src="bathroom-index.js"></script>
         
 
     
