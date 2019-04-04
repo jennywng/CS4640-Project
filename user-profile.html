@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-link" href="user-profile.html">Profile</a>
+                      <a class="nav-link" id="profile-link" href="user-profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
@@ -62,12 +62,61 @@
     </nav>
 
     <hr class="my-4">
+    <div data-spy="scroll" data-target="#mainNav" data-offset="0">
+        <div class="jumbotron text-left" id="jumbo">
 
-    <div class="container">
+            <div class="row">
+                <div class="col-6 text-center" >
+                    <p></p>
+                    <h1 class = "display-4">
+                        Username: abcde
+                    </h1>
+                </div>
+                <div class="col-6 text-right">
+                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src="http://placehold.it/150x150">
+                </div>
+            </div>
+        </div>
+
+    <p></p>
+    </div>
+
+    <section class = "container">
+        <!-- <div class="row"> -->
+        <h3>User Information: </h3>
+        <br>
+        <h4>User ID: </h4>
+        <br>
+        <h4>Email: </h4>
+        <br>
+        <p></p>
+        <!-- </div> -->
+        <hr />
+        <h3>Reviews Made: </h3> 
+
+            
+        <br>
+        <p></p>
+        <hr />
+        <h3>Favorite Restrooms: </h3>
+
+        <br>
+        <p></p>
+        </div>
+        <hr />
+
+        <a class="btn" href="logout.php" style="background-color: red">Logout</a>
+
+    </section>
+
+
+                    
+
+    <!-- <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="image-container">
-                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                <div class="image-container"> -->
+                    <!-- <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                     <div class="imageupload">
                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change"/>
                         <input type="file" style="display: none;" id="profilePicture" name="file"/>
@@ -104,10 +153,8 @@
             </div>
         </div>
         <a class="btn" href="edit-profile.html">Edit Profile</a>
-        <br><br>
-        <a class="btn" href="logout.php" style="background-color: red">Logout</a>
+        <br><br> -->
     </div>
-    
 
 </body>
 

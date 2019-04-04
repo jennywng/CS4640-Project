@@ -1,8 +1,48 @@
+<?php
+
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "flushd";
+
+// create connection to database
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn -> connect_error) {
+	die("Unable to connect to DB: " . $conn -> connect_error);
+}
+$user_id = $_SESSION['id'];
+
+// echo $_SESSION['id'];
+//     //$_session UID
+//     if (isset($_SESSION['id'])) {
+//         $user_id = $_SESSION['id'];
+//     }
+
+$sSQL = "SELECT ID, firstname, lastname, email FROM users Where ID = $user_id";
+$result = $conn->query($sSQL);
+
+if ($result -> num_rows > 0) {
+
+    while($row = $result->fetch_assoc()) {
+        extract($row);
+
+        // echo "UserID: " .$ID."<br /> Email: ".$email;
+
+    }
+
+} else {
+    echo 'No results';
+}
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-            <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
+<head>
+        <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
 
         <meta charset="utf-8">
     
@@ -24,12 +64,12 @@
         <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
-
-        <script src="js/bathroom-index.js"></script>
     </head>
 
-    <body onload="getBathrooms()">
-        <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
+
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
               <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
             </a>
@@ -45,7 +85,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-link" href="user-profile.php">Profile</a>
+                      <a class="nav-link" id="profile-link" href="user-profile.html">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
@@ -59,67 +99,52 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>  
-        </nav>
+    </nav>
 
-        
-        <hr class="my-4">
+    <div data-spy="scroll" data-target="#mainNav" data-offset="0">
+        <div class="jumbotron text-left" id="jumbo">
 
-<div class = "container" id ="bathrooms">
-    <h2>Bathrooms Near Me</h2>
-    <div class="row">
-        <div class="col-sm-8" id="bathroomlist">
-
-        </div>
-
-        <div class="col-sm-4">
-            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 350px">
-            <iframe src="https://maps.google.com/maps?q=charlottesville&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                style="border:0" allowfullscreen></iframe>
-            </div>
-            
-            <h3>Filters</h3>
-
-            <div class="form-check">
-                
-                <input class="form-check-input" type="checkbox" value="" id="gender-check">
-                <label class="form-check-label" for="gender-check"><i class="fas fa-transgender-alt"></i> Gender Neutral</label>
-            </div>
-
-             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="products-check">
-                <label class="form-check-label" for="products-check"><i class="fas fa-female"></i> Feminine Products Available</label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="paper-check">
-                <label class="form-check-label" for="paper-check"><i class="fas fa-toilet-paper"></i> Paper Towel</label>
-            </div>
-
-            <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="air-check">
-                    <label class="form-check-label" for="air-check"><i class="fas fa-wind"></i> Air Dryer</label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="feed-check">
-                <label class="form-check-label" for="feed-check"><i class="fas fa-utensils"></i> Breast Feeding Area</label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="diaper-check">
-                <label class="form-check-label" for="diaper-check"><i class="fas fa-baby"></i> Baby Diaper Change</label>
+            <div class="row">
+                <div class="col-6 text-center" >
+                    <p></p>
+                    <h1 class = "display-4">
+                        <?php echo $firstname . " " . $lastname;?>
+                    </h1>
+                </div>
+                <div class="col-6 text-right">
+                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src="http://placehold.it/150x150">
+                </div>
             </div>
         </div>
+    <p></p>
     </div>
-</body> 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/checkbox.js"></script>
-        <script src="bathroom-index.js"></script>
-        
+    <section class = "container">
+        <!-- <div class="row"> -->
+        <h3>User Information: </h3>
+        <br>
+        <h4><?php echo "UserID: ".$ID;?></h4>
+        <br>
+        <h4><?php echo "Email: ".$email;?></h4>
+        <br>
+        <p></p>
+        <!-- </div> -->
+        <hr />
+        <h3>Favorite Restrooms: </h3>
 
-    
+        <br>
+        <p></p>
+        </div>
+        <hr />
+
+        <a class="btn" href="logout.php" style="background-color: red">Logout</a>
+
+    </section>
+</div>
+</body>
+
 </html>
 
 
+   
 
