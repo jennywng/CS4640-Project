@@ -16,6 +16,45 @@ $message = '';
 
 
 
+<?php 
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_FILES['upload'])) {
+        $file_name = $uID . $_FILES['upload']['name'];
+        $file_type = $_FILES['upload']['type'];
+		$file_tmp_name = $_FILES['upload']['tmp_name'];
+        $file_size = $_FILES['upload']['size'];
+        $target_dir = "uploads/";
+        if(move_uploaded_file($file_tmp_name, $target_dir.$file_name)) {
+			// connect to database
+			$servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "flushd";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn -> connect_error) {
+	            die("Unable to connect to DB: " . $conn -> connect_error);
+            }
+			
+			// query
+			$q = "UPDATE users SET profilepic='$target_dir$file_name' WHERE ID=$uID";
+            
+            if ($conn->query($q) === TRUE) {
+                $message =  "Profile picture successfully uploaded. Click on Profile to view.";
+            } else {
+                $message =  "Error updating record: " . $conn->error;
+            }			
+		} else {
+			$message =  "File can not be uploaded";
+		}
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,41 +156,4 @@ $message = '';
 </html>
 
 
-
-<?php 
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_FILES['upload'])) {
-        $file_name = $uID . $_FILES['upload']['name'];
-        $file_type = $_FILES['upload']['type'];
-		$file_tmp_name = $_FILES['upload']['tmp_name'];
-        $file_size = $_FILES['upload']['size'];
-        $target_dir = "uploads/";
-        if(move_uploaded_file($file_tmp_name, $target_dir.$file_name)) {
-			// connect to database
-			$servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "flushd";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            if ($conn -> connect_error) {
-	            die("Unable to connect to DB: " . $conn -> connect_error);
-            }
-			
-			// query
-			$q = "UPDATE users SET profilepic='$target_dir$file_name' WHERE ID=$uID";
-            
-            if ($conn->query($q) === TRUE) {
-                $message =  "Profile picture successfully uploaded. Click on Profile to view.";
-            } else {
-                $message =  "Error updating record: " . $conn->error;
-            }			
-		} else {
-			$message =  "File can not be uploaded";
-		}
-    }
-}
-
-?>
 
