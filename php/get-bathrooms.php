@@ -14,7 +14,7 @@ if ($conn -> connect_error) {
 
 
 
-$get_all_bathrooms = "SELECT ID, title, location, description AvgRating, from bathrooms";
+$get_all_bathrooms = "SELECT ID, title, location, description, AvgRating from bathrooms";
 
 
 $result = $conn->query($get_all_bathrooms);
