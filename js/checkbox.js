@@ -1,4 +1,4 @@
-var medias = document.getElementsByClassName('media');
+var medias = document.getElementsByClassName('bathroomContainer');
 var genderNeutrals = document.getElementsByClassName('gender-neutral');
 var paperTowels = document.getElementsByClassName('paper-towel');
 var airDryers = document.getElementsByClassName('air-dryer');

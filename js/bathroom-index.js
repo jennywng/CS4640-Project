@@ -1,8 +1,25 @@
-function createBathroomDiv(id, title, desc, loc, rating) {
-    console.log("creating bathroom: " + id);
+{/* <div class="bathroomContainer">
+    <div class="media">
+        <img></img>
+        <div class="media-body">
+            <h5><a>Title</a></h5>
+            <span>Star</span> <span>Rating</span>
+            <p>Address</p>
+        </div>
+    </div>
+</div> */}
+
+
+function createBathroomDiv(id, title, desc, loc, rating, gender, fem, paper, air, breast, diaper) {
+    gghyu("creating bathroom: " + id);
     var $content = $("<div>", {class: "bathroomContainer"});
     var $div = $("<div>", {class: 'media'});
     $div.attr('value', id);
+
+    // adding tags to class attr of bathroomContainer
+    if (gender) {$content.addClass("gender-neutral");}
+    if (paper) {$content.addClass("paper-towel");}
+
 
     var $img = $("<img>", {class: "align-self-start mr-3"});
     $img.attr('src', "http://placehold.it/150x150");
@@ -36,8 +53,6 @@ function createBathroomDiv(id, title, desc, loc, rating) {
     $content.append($div);
     $content.append($hr);
 
-    console.log($content);
-
     return $content;
 }
 
@@ -52,8 +67,10 @@ function getBathrooms() {
         success: function(data) {
             var bathrooms = data.all_bathrooms_data;
             bathrooms.forEach((item) => {
-                console.log(item.avgRating);
-                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating);
+                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating, 
+                    item.genderN, item.femP, item.paper, item.air, item.breast, item.diaper);
+                console.log(item.genderN);
+                console.log(typeof(item.genderN));
                 $bathroomListEle.append(bath);
               });
 

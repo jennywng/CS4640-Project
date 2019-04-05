@@ -1,3 +1,21 @@
+
+<?php
+
+
+session_start();
+
+if($_SESSION['loggedin']!== true || !isset($_SESSION['loggedin'])) {
+    header('login.php');
+}
+
+$uID = $_SESSION['uid'];
+
+$message = '';
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +63,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-link" href="user-profile.html">Profile</a>
+                      <a class="nav-link" id="profile-link" href="user-profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
@@ -64,10 +82,10 @@
     <hr class="my-4">
 
     <div class="container">
-        <form>
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                     <label>Upload Profile Picture</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
             </div>
 
             <div class="form-group row">
@@ -82,23 +100,58 @@
                     <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="jennywang">
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
+            </div> -->
 
-            <button type="submit" class="btn btn-primary">Submit</button>   
+            <input type="submit" class="btn" value="Submit">   
+
+            <p><?php echo $message ?></p>
+
         </form>
     </div>
     
 
 </body>
-
 </html>
 
 
 
+<?php 
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_FILES['upload'])) {
+        $file_name = $_FILES['upload']['name'];
+        $file_type = $_FILES['upload']['type'];
+		$file_tmp_name = $_FILES['upload']['tmp_name'];
+        $file_size = $_FILES['upload']['size'];
+        $target_dir = "uploads/";
+        if(move_uploaded_file($file_tmp_name, $target_dir.$file_name)) {
+			// connect to database
+			$servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "flushd";
 
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn -> connect_error) {
+	            die("Unable to connect to DB: " . $conn -> connect_error);
+            }
+			
+			// query
+			$q = "UPDATE users SET profilepic='$target_dir$file_name' WHERE ID=$uID";
+            
+            if ($conn->query($q) === TRUE) {
+                $message =  "Profile picture successfully uploaded. Click on Profile to view.";
+            } else {
+                $message =  "Error updating record: " . $conn->error;
+            }			
+		} else {
+			$message =  "File can not be uploaded";
+		}
+    }
+}
 
+?>
 

@@ -3,10 +3,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-// $password = "pwdpwd";
 $dbname = "flushd";
 
-// create connection to database
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn -> connect_error) {
 	die("Unable to connect to DB: " . $conn -> connect_error);
@@ -14,7 +12,8 @@ if ($conn -> connect_error) {
 
 
 
-$get_all_bathrooms = "SELECT ID, title, location, description, AvgRating from bathrooms";
+$get_all_bathrooms = "SELECT ID, title, location, description, AvgRating, GenderNeutral, FemProducts, PaperTowel, AirDryer, BreastFeed, Diaper
+ from bathrooms";
 
 
 $result = $conn->query($get_all_bathrooms);
@@ -26,7 +25,10 @@ if ($result -> num_rows > 0) {
 
         $AvgRating = round($AvgRating, 2);
 
-        $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 'description'=>$description, 'avgRating'=>$AvgRating);
+        $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 
+        'description'=>$description, 'avgRating'=>$AvgRating, 
+        'genderN'=>$GenderNeutral, 'femP'=>$FemProducts, 'paper'=>$PaperTowel, 'air'=>$AirDryer,
+        'breast'=>$BreastFeed, 'diaper'=>$Diaper);
     }
 
     $encode_export = array('all_bathrooms_data'=>$export);

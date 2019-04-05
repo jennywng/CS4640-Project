@@ -20,21 +20,21 @@ $user_id = $_SESSION['uid'];
 //         $user_id = $_SESSION['id'];
 //     }
 
-$sSQL = "SELECT ID, firstname, lastname, email FROM users Where ID = $user_id";
+$sSQL = "SELECT ID, firstname, lastname, email, profilepic FROM users WHERE ID = $user_id";
 $result = $conn->query($sSQL);
 
 if ($result -> num_rows > 0) {
-
     while($row = $result->fetch_assoc()) {
         extract($row);
-
-        // echo "UserID: " .$ID."<br /> Email: ".$email;
-
     }
-
 } else {
     echo 'No results';
 }
+
+// set cookie
+setcookie('userprofile', $profilepic, (time() + (3600*2)));
+
+
 $conn->close();
 ?>
 
@@ -85,7 +85,7 @@ $conn->close();
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-link" href="user-profile.html">Profile</a>
+                      <a class="nav-link" id="profile-link" href="user-profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
@@ -112,7 +112,7 @@ $conn->close();
                     </h1>
                 </div>
                 <div class="col-6 text-right">
-                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src="http://placehold.it/150x150">
+                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src=<?php echo $profilepic; ?>>
                 </div>
             </div>
         </div>
@@ -137,6 +137,7 @@ $conn->close();
         </div>
         <hr />
 
+        <a class="btn" href="edit-profile.php">Edit Profile</a><br>
         <a class="btn" href="logout.php" style="background-color: red">Logout</a>
 
     </section>

@@ -1,5 +1,9 @@
 <?php
 
+/*
+For every bathroom in the DB, get all the reviews for that bathroom and calculate its average rating
+then update the bathrooms table w. the new average rating
+ */
 
 $servername = "localhost";
 $username = "root";
