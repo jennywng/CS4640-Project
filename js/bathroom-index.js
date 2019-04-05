@@ -9,16 +9,28 @@
     </div>
 </div> */}
 
+function stringToBoolean(val){
+    var a = {
+        '1':true,
+        '0':false
+    };
+    return a[val];
+}
+
 
 function createBathroomDiv(id, title, desc, loc, rating, gender, fem, paper, air, breast, diaper) {
-    gghyu("creating bathroom: " + id);
+    console.log("creating bathroom: " + id);
     var $content = $("<div>", {class: "bathroomContainer"});
     var $div = $("<div>", {class: 'media'});
-    $div.attr('value', id);
+    $content.attr('value', id);
 
     // adding tags to class attr of bathroomContainer
-    if (gender) {$content.addClass("gender-neutral");}
-    if (paper) {$content.addClass("paper-towel");}
+    if (gender==='1') {$content.addClass("gender-check");}
+    if (fem==='1') {$content.addClass("products-check");}
+    if (paper==='1') {$content.addClass("paper-check");}
+    if (air==='1') {$content.addClass("air-check");}
+    if (breast==='1') {$content.addClass("feed-check");}
+    if (diaper==='1') {$content.addClass("diaper-check");}
 
 
     var $img = $("<img>", {class: "align-self-start mr-3"});
@@ -69,11 +81,8 @@ function getBathrooms() {
             bathrooms.forEach((item) => {
                 var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating, 
                     item.genderN, item.femP, item.paper, item.air, item.breast, item.diaper);
-                console.log(item.genderN);
-                console.log(typeof(item.genderN));
                 $bathroomListEle.append(bath);
-              });
-
+            });
         }
     }); 
 }
