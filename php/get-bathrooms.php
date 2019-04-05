@@ -24,6 +24,8 @@ if ($result -> num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         extract($row);
 
+        $AvgRating = round($AvgRating, 2);
+
         $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 'description'=>$description, 'avgRating'=>$AvgRating);
     }
 

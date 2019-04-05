@@ -43,25 +43,20 @@ function createBathroomDiv(id, title, desc, loc, rating) {
 
 
 function getBathrooms() {
-    console.log("getting bathrooms");
     var $bathroomListEle = $("#bathroomlist");
-    // var bathroomListEle = document.getElementById('bathroomlist');
-    console.log($bathroomListEle);
-
+    
     $.ajax({
         url: 'php/get-bathrooms.php',
         type: 'POST',
         dataType: 'json',
         success: function(data) {
             var bathrooms = data.all_bathrooms_data;
-            console.log(bathrooms);
             bathrooms.forEach((item) => {
-                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.rating);
+                console.log(item.avgRating);
+                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating);
                 $bathroomListEle.append(bath);
               });
 
         }
     }); 
 }
-
-

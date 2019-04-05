@@ -42,19 +42,16 @@ function createReviewDiv(id, title, desc, loc, rating) {
 
 
 function getBathrooms() {
-    console.log("getting bathrooms");
     var $bathroomListEle = $("#bathroomlist");
-    // var bathroomListEle = document.getElementById('bathroomlist');
-    console.log($bathroomListEle);
-
+    
     $.ajax({
         url: 'php/get-bathrooms.php',
         type: 'POST',
         dataType: 'json',
         success: function(data) {
             var bathrooms = data.all_bathrooms_data;
-            console.log(bathrooms);
             bathrooms.forEach((item) => {
+                console.log(item.rating);
                 var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.rating);
                 $bathroomListEle.append(bath);
               });
