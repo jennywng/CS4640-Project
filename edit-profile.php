@@ -122,7 +122,7 @@ $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_FILES['upload'])) {
-        $file_name = $_FILES['upload']['name'];
+        $file_name = $uID . $_FILES['upload']['name'];
         $file_type = $_FILES['upload']['type'];
 		$file_tmp_name = $_FILES['upload']['tmp_name'];
         $file_size = $_FILES['upload']['size'];
