@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn -> connect_error) {
 	die("Unable to connect to DB: " . $conn -> connect_error);
 }
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['uid'];
 
 // echo $_SESSION['id'];
 //     //$_session UID

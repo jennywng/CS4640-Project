@@ -1,4 +1,4 @@
-function createBathroomDiv(id, title, desc, loc, rating) {
+function createReviewDiv(id, title, desc, loc, rating) {
     console.log("creating bathroom: " + id);
     var $content = $("<div>", {class: "bathroomContainer"});
     var $div = $("<div>", {class: 'media'});
@@ -14,8 +14,7 @@ function createBathroomDiv(id, title, desc, loc, rating) {
     $h5.text(title);
     $h5.appendTo($a);
     $a.appendTo($divBody);
-    $a.attr('href', "bathroom-profile.html");
-    $a.attr('value', id);
+    $a.attr('href', "bathroom-profile.html")
 
     var $pooSpan = $("<span>", {class: "fas fa-poo checked"});
     var $ratingSpan = $("<span>", {class: "rating"});
@@ -63,5 +62,3 @@ function getBathrooms() {
         }
     }); 
 }
-
-
