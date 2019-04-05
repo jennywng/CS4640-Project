@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2019 at 12:22 AM
+-- Generation Time: Apr 05, 2019 at 06:08 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -33,24 +33,30 @@ CREATE TABLE `bathrooms` (
   `title` varchar(100) NOT NULL,
   `description` varchar(300) NOT NULL,
   `location` varchar(200) NOT NULL,
-  `AvgRating` float DEFAULT NULL
+  `AvgRating` float DEFAULT '0',
+  `GenderNeutral` tinyint(1) NOT NULL DEFAULT '0',
+  `FemProducts` tinyint(1) NOT NULL DEFAULT '0',
+  `PaperTowel` tinyint(1) NOT NULL DEFAULT '0',
+  `AirDryer` tinyint(1) NOT NULL DEFAULT '0',
+  `BreastFeed` tinyint(1) NOT NULL DEFAULT '0',
+  `Diaper` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bathrooms`
 --
 
-INSERT INTO `bathrooms` (`ID`, `title`, `description`, `location`, `AvgRating`) VALUES
-(0, 'Olsson 1st Floor', 'wide spacious gender neutral bathroom but only one stall', '151 Engineer\'s Way, Charlottesville, VA 22903', NULL),
-(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904', NULL),
-(2, 'Rice Hall 1st Floor', 'Clean, fairly open space bathroom with 4 stalls.', '85 Engineer\'s Way, Charlottesville, VA 22903', NULL),
-(3, 'Newcomb Dining', 'Only accessible after swiping in, clean and new restroom stalls', '180 McCormick Rd, Charlottesville, VA 22903', NULL),
-(4, 'Clark 1st Floor', 'Nice bathroom but very busy when classes end.', '291 McCormick Rd, Charlottesville, VA 22903', NULL),
-(5, 'New Cabell 4th Floor', 'nice and clean bathroom with multiple stalls', '1605 Jefferson Park Ave, Charlottesville, VA 22903', NULL),
-(6, 'Bryant Hall 4th floor', 'Elegant and comfortable space, accessible in student lounge when you have interviews', '1815 Stadium Rd, Charlottesville, VA 22903', NULL),
-(7, 'Monroe Hall entrance', 'old and cramped stall, can\'t even turn around in the stall', 'Monroe Hall Charlottesville, VA 22903', NULL),
-(8, 'Clemons Library 2nd Floor', 'new, clean and very modern look with provided tampons/pads in girl\'s bathroom!', 'Newcomb Rd N, Charlottesville, VA 22904', NULL),
-(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904', NULL);
+INSERT INTO `bathrooms` (`ID`, `title`, `description`, `location`, `AvgRating`, `GenderNeutral`, `FemProducts`, `PaperTowel`, `AirDryer`, `BreastFeed`, `Diaper`) VALUES
+(0, 'Olsson 1st Floor', 'wide spacious gender neutral bathroom but only one stall', '151 Engineer\'s Way, Charlottesville, VA 22903', 0, 0, 0, 1, 0, 0, 0),
+(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904', 0, 0, 0, 1, 0, 0, 0),
+(2, 'Rice Hall 1st Floor', 'Clean, fairly open space bathroom with 4 stalls.', '85 Engineer\'s Way, Charlottesville, VA 22903', 1.66667, 0, 0, 1, 0, 0, 0),
+(3, 'Newcomb Dining', 'Only accessible after swiping in, clean and new restroom stalls', '180 McCormick Rd, Charlottesville, VA 22903', 0, 0, 0, 1, 1, 0, 0),
+(4, 'Clark 1st Floor', 'Nice bathroom but very busy when classes end.', '291 McCormick Rd, Charlottesville, VA 22903', 0, 0, 1, 0, 1, 0, 0),
+(5, 'New Cabell 4th Floor', 'nice and clean bathroom with multiple stalls', '1605 Jefferson Park Ave, Charlottesville, VA 22903', 0, 0, 0, 0, 0, 0, 0),
+(6, 'Bryant Hall 4th floor', 'Elegant and comfortable space, accessible in student lounge when you have interviews', '1815 Stadium Rd, Charlottesville, VA 22903', 0, 0, 0, 0, 0, 0, 0),
+(7, 'Monroe Hall entrance', 'old and cramped stall, can\'t even turn around in the stall', 'Monroe Hall Charlottesville, VA 22903', 0, 0, 0, 1, 1, 0, 0),
+(8, 'Clemons Library 2nd Floor', 'new, clean and very modern look with provided tampons/pads in girl\'s bathroom!', 'Newcomb Rd N, Charlottesville, VA 22904', 5, 0, 0, 0, 0, 0, 0),
+(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904', 4, 0, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -103,6 +109,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `pwd` varchar(100) NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date the user registered',
+  `profilepic` varchar(100) DEFAULT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -110,11 +117,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `firstname`, `lastname`, `username`, `email`, `pwd`, `reg_date`, `admin`) VALUES
-(1, 'Amber', 'Liu', '', 'reamber.liu@gmail.com', '$2y$10$5DZmztcMUK8viAxtnHamauVfR6IDXMuKXThj5nVtPX2vMj2UW/eGa', '2019-04-03 22:49:13', 0),
-(2, 'Jenny', 'Wang', '', 'jenny.wang9812@gmail.com', '$2y$10$x.QQtK6w.LiU4DCVKdW7huPsdQkCcz4aedpnrwAhcufZuXw5ubWvW', '2019-04-04 20:10:31', 0),
-(3, 'wuxin', 'zeng', '', 'wz4up@virgnia.edu', '$2y$10$E3OLkB6TXMdl.KDeEMAR0eqZfRMPy.qoABqd5fh/enUwfG2S0X9VO', '2019-04-04 22:02:07', 0),
-(4, 'wuxin', 'zeng', '', 'angelinezeng1997@gmail.com', '$2y$10$EoG7rzFFvd3I9G.H8tMvP.ribpMEdjZlfdayGwdhl77v2gdDu3ymC', '2019-04-04 22:03:10', 0);
+INSERT INTO `users` (`ID`, `firstname`, `lastname`, `username`, `email`, `pwd`, `reg_date`, `profilepic`, `admin`) VALUES
+(1, 'Amber', 'Liu', '', 'reamber.liu@gmail.com', '$2y$10$5DZmztcMUK8viAxtnHamauVfR6IDXMuKXThj5nVtPX2vMj2UW/eGa', '2019-04-03 22:49:13', NULL, 0),
+(2, 'Jenny', 'Wang', '', 'jenny.wang9812@gmail.com', '$2y$10$x.QQtK6w.LiU4DCVKdW7huPsdQkCcz4aedpnrwAhcufZuXw5ubWvW', '2019-04-04 20:10:31', 'uploads/2rsz_peach.jpg', 0),
+(3, 'wuxin', 'zeng', '', 'wz4up@virgnia.edu', '$2y$10$E3OLkB6TXMdl.KDeEMAR0eqZfRMPy.qoABqd5fh/enUwfG2S0X9VO', '2019-04-04 22:02:07', NULL, 0),
+(4, 'wuxin', 'zeng', '', 'angelinezeng1997@gmail.com', '$2y$10$EoG7rzFFvd3I9G.H8tMvP.ribpMEdjZlfdayGwdhl77v2gdDu3ymC', '2019-04-04 22:03:10', NULL, 0);
 
 --
 -- Indexes for dumped tables
