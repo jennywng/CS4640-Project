@@ -1,6 +1,7 @@
 <?php 
 function setCookieForReview() {
     // get user id from current session
+    
     echo 'test';
     header('submit-review.php');
 }
@@ -210,7 +211,7 @@ $conn->close();
     
         <div class="container">
             <!-- <h3>Write a Review</h3> -->
-            <button onclick="<?php echo setCookieForReview();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
+            <a href="submit-review.php" onclick="<?php setCookieForReview();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</a>   
         </div>
 
 
