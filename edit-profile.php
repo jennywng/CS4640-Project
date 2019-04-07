@@ -14,6 +14,43 @@ $message = '';
 
 ?>
 
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "flushd";
+
+// create connection to database
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn -> connect_error) {
+	die("Unable to connect to DB: " . $conn -> connect_error);
+}
+$user_id = $_SESSION['uid'];
+
+// echo $_SESSION['id'];
+//     //$_session UID
+//     if (isset($_SESSION['id'])) {
+//         $user_id = $_SESSION['id'];
+//     }
+
+$sSQL = "SELECT ID, firstname, lastname, email, profilepic FROM users WHERE ID = $user_id";
+$result = $conn->query($sSQL);
+
+if ($result -> num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        extract($row);
+    }
+} else {
+    echo 'No results';
+}
+
+
+$conn->close();
+?>
+
+
+
 
 
 <?php 
@@ -36,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($conn -> connect_error) {
 	            die("Unable to connect to DB: " . $conn -> connect_error);
             }
-			
+
 			// query
 			$q = "UPDATE users SET profilepic='$target_dir$file_name' WHERE ID=$uID";
             
@@ -52,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -130,13 +166,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="jrw3mx@virginia.edu">
+                    <?php echo $email;?>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="jennywang">
+                    <?php echo $firstname . $lastname . $ID;?>
                 </div>
             </div>
             <!-- <div class="form-group">
