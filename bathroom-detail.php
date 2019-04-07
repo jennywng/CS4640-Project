@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+            <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
+
+        <meta charset="utf-8">
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+            
+            <!-- make browser window responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/bathroom-profile.css">
+        <link rel="stylesheet" href="styles/user-home-style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+        <!-- <link rel="manifest" href="favicons/site.webmanifest"> -->
+        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#603cba">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+
 <?php
 
 
@@ -45,37 +75,6 @@ $conn->close();
 
 
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-            <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
-
-        <meta charset="utf-8">
-    
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
-            
-            <!-- make browser window responsive -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-            
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/bathroom-profile.css">
-        <link rel="stylesheet" href="styles/user-home-style.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-
-        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-        <!-- <link rel="manifest" href="favicons/site.webmanifest"> -->
-        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#603cba">
-        <meta name="theme-color" content="#ffffff">
-    </head>
 
     <body>
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
@@ -138,8 +137,7 @@ $conn->close();
                 </div>
             </div>
 
-            
-
+        
             <br> 
             <div id="bathroomPics" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -192,87 +190,8 @@ $conn->close();
     
         <div class="container">
             <hr class="my-4">
-            <h3>Write a Review</h3>
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label><i class="fas fa-upload"></i> Upload Bathroom Picture</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-
-                    <!-- <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose picture</label>
-                    </div> -->
-                    <div class="rating">
-                    <label>
-                        <input type="radio" name="stars" value="1" />
-                        <span class="fas fa-poo icon"></span>
-                    </label>
-                    <label>
-                        <input type="radio" name="stars" value="2" />
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                    </label>
-                    <label>
-                        <input type="radio" name="stars" value="3" />
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>  
-                    </label>
-                    <label>
-                        <input type="radio" name="stars" value="4" />
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                    </label>
-                    <label>
-                        <input type="radio" name="stars" value="5" />
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                        <span class="fas fa-poo icon"></span>
-                    </label>
-                    </div>
-
-                    <div></div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">Gender Neutral</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">Feminine Products Available</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Paper Towel</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Air Dryer</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Breast Feeding Area</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Diaper Changing Area</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="review">Review</label>
-                        <textarea class="form-control" id="review-text" rows="5" placeholder="Review"></textarea>
-                    </div>
-                </form>
-                <button class="btn btn-primary" id="reviewFormSubmitBtn">Submit</button>   
-            </div>
+            <!-- <h3>Write a Review</h3> -->
+            <button class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
         </div>
 
 
