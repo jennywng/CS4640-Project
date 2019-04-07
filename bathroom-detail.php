@@ -74,6 +74,8 @@ INNER JOIN users U ON R.uID = U.ID
 WHERE R.bID=$bID";
 
 
+$reviews = null;
+
 $result = $conn->query($get_reviews);
 
 if ($result -> num_rows > 0) {
@@ -83,10 +85,7 @@ if ($result -> num_rows > 0) {
          'fname'=>$firstname, 'lname'=>$lastname, 'profilepic'=>$profilepic);
     }
 
-} else {
-    echo 'No results';
 }
-
 
 $conn->close();
 
@@ -188,7 +187,9 @@ $conn->close();
             <div class="review-container">
             <hr class="my-4">
 
-            <?php foreach ($reviews as $review) { ?>
+            <?php 
+            if ($reviews != null) {
+            foreach ($reviews as $review) { ?>
             
             <div class="review">
             <div class="media">
@@ -203,7 +204,8 @@ $conn->close();
             <hr class="my-4">
             </div>
 
-            <?php } ?> <!-- end for loop  -->
+            <?php } 
+            } else {echo 'No reviews';} ?> <!-- end for loop  -->
             </div>
         </div> 
     
