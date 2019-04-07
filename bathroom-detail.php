@@ -92,8 +92,6 @@ $conn->close();
 ?>
 
 
-
-
     <body>
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
@@ -141,12 +139,18 @@ $conn->close();
                         <p id="bath-desc"><?php echo $bDesc?></p>
                 </div>
                 <div class="col right-col">
-                    <i class="fas fa-times" id="gender-icon"></i><span> Gender Neutral</span><br>
-                    <i class="fas fa-times" id="fem-icon"></i><span> Feminine Products Available</span><br>
-                    <i class="fas fa-times" id="paper-icon"></i><span> Paper Towel</span><br>
-                    <i class="fas fa-times" id="air-icon"></i><span> Air Dryer</span><br>
-                    <i class="fas fa-times" id="breast-icon"></i><span> Breast Feeding Area</span><br>
-                    <i class="fas fa-times" id="diaper-icon"></i><span> Baby Diaper Change</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->GenderNeutral == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="gender-icon"></i><span> Gender Neutral</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->FemProducts == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="fem-icon"></i><span> Feminine Products Available</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->PaperTowel == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="paper-icon"></i><span> Paper Towel</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->AirDryer == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="air-icon"></i><span> Air Dryer</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->BreastFeed == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="breast-icon"></i><span> Breast Feeding Area</span><br>
+                    <i class="<?php $xml=simplexml_load_file("bathrooms.xml") or die("Error: Cannot create object");
+                        if($xml->bath[$bID]->Diaper == 1) {echo 'fas fa-check';} else{echo 'fas fa-times';} ?>" id="diaper-icon"></i><span> Baby Diaper Change</span><br>
                 </div>
             </div>
 

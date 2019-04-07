@@ -1,174 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-- phpMyAdmin XML Dump
-- version 4.8.4
-- https://www.phpmyadmin.net
--
-- Host: 127.0.0.1
-- Generation Time: Apr 07, 2019 at 08:22 PM
-- Server version: 10.1.37-MariaDB
-- PHP Version: 7.3.1
--->
+<bathrooms>
+    <bath>
+        <ID>0</ID>
+        <bTitle>Olsson 1st Floor</bTitle>
+        <bDesc>wide spacious gender neutral bathroom but only one stall</bDesc>
+        <bLoc>151 Engineer's Way, Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+    <bath>
+        <ID>1</ID>
+        <bTitle>Physics Building 3rd Floor</bTitle>
+        <bDesc>Old, small and cramped stalls</bDesc>
+        <bLoc>382 McCormick Rd, Charlottesville, VA 22904</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+    <bath>  
+        <ID>2</ID>
+        <bTitle>Rice Hall 1st Floor</bTitle>
+        <bDesc>Clean, fairly open space bathroom with 4 stalls.</bDesc>
+        <bLoc>85 Engineer's Way, Charlottesville, VA 22903</bLoc>
+        <AvgRating>1.66667</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+    <bath>
+        <ID>3</ID>
+        <bTitle>Newcomb Dining</bTitle>
+        <bDesc>Only accessible after swiping in, clean and new restroom stalls</bDesc>
+        <bLoc>180 McCormick Rd, Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>1</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+    <bath>
+        <ID>4</ID>
+        <bTitle>Clark 1st Floor</bTitle>
+        <bDesc>Nice bathroom but very busy when classes end.</bDesc>
+        <bLoc>291 McCormick Rd, Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>1</FemProducts>
+        <PaperTowel>0</PaperTowel>
+        <AirDryer>1</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
 
-<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
-    <!--
-    - Structure schemas
-    -->
-    <pma:structure_schemas>
-        <pma:database name="flushd" collation="latin1_swedish_ci" charset="latin1">
-            <pma:table name="bathrooms">
-                CREATE TABLE `bathrooms` (
-                  `ID` int(6) NOT NULL,
-                  `bTitle` varchar(100) NOT NULL,
-                  `bDesc` varchar(300) NOT NULL,
-                  `bLoc` varchar(200) NOT NULL,
-                  `AvgRating` float DEFAULT '0',
-                  `GenderNeutral` tinyint(1) NOT NULL DEFAULT '0',
-                  `FemProducts` tinyint(1) NOT NULL DEFAULT '0',
-                  `PaperTowel` tinyint(1) NOT NULL DEFAULT '0',
-                  `AirDryer` tinyint(1) NOT NULL DEFAULT '0',
-                  `BreastFeed` tinyint(1) NOT NULL DEFAULT '0',
-                  `Diaper` tinyint(1) NOT NULL DEFAULT '0',
-                  UNIQUE KEY `ID` (`ID`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-            </pma:table>
-        </pma:database>
-    </pma:structure_schemas>
+    <bath>
+        <ID>5</ID>
+        <bTitle>New Cabell 4th Floor</bTitle>
+        <bDesc>nice and clean bathroom with multiple stalls</bDesc>
+        <bLoc>1605 Jefferson Park Ave, Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>0</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+    <bath>
+        <ID>6</ID>
+        <bTitle>Bryant Hall 4th floor</bTitle>
+        <bDesc>Elegant and comfortable space, accessible in student lounge when you have interviews</bDesc>
+        <bLoc>1815 Stadium Rd, Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>0</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
 
-    <!--
-    - Database: 'flushd'
-    -->
-    <database name="flushd">
-        <!-- Table bathrooms -->
-        <table name="bathrooms">
-            <column name="ID">0</column>
-            <column name="bTitle">Olsson 1st Floor</column>
-            <column name="bDesc">wide spacious gender neutral bathroom but only one stall</column>
-            <column name="bLoc">151 Engineer's Way, Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">1</column>
-            <column name="bTitle">Physics Building 3rd Floor</column>
-            <column name="bDesc">Old, small and cramped stalls</column>
-            <column name="bLoc">382 McCormick Rd, Charlottesville, VA 22904</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">2</column>
-            <column name="bTitle">Rice Hall 1st Floor</column>
-            <column name="bDesc">Clean, fairly open space bathroom with 4 stalls.</column>
-            <column name="bLoc">85 Engineer's Way, Charlottesville, VA 22903</column>
-            <column name="AvgRating">1.66667</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">3</column>
-            <column name="bTitle">Newcomb Dining</column>
-            <column name="bDesc">Only accessible after swiping in, clean and new restroom stalls</column>
-            <column name="bLoc">180 McCormick Rd, Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">1</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">4</column>
-            <column name="bTitle">Clark 1st Floor</column>
-            <column name="bDesc">Nice bathroom but very busy when classes end.</column>
-            <column name="bLoc">291 McCormick Rd, Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">1</column>
-            <column name="PaperTowel">0</column>
-            <column name="AirDryer">1</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">5</column>
-            <column name="bTitle">New Cabell 4th Floor</column>
-            <column name="bDesc">nice and clean bathroom with multiple stalls</column>
-            <column name="bLoc">1605 Jefferson Park Ave, Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">0</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">6</column>
-            <column name="bTitle">Bryant Hall 4th floor</column>
-            <column name="bDesc">Elegant and comfortable space, accessible in student lounge when you have interviews</column>
-            <column name="bLoc">1815 Stadium Rd, Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">0</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">7</column>
-            <column name="bTitle">Monroe Hall entrance</column>
-            <column name="bDesc">old and cramped stall, can't even turn around in the stall</column>
-            <column name="bLoc">Monroe Hall Charlottesville, VA 22903</column>
-            <column name="AvgRating">0</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">1</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">8</column>
-            <column name="bTitle">Clemons Library 2nd Floor</column>
-            <column name="bDesc">new, clean and very modern look with provided tampons/pads in girl's bathroom!</column>
-            <column name="bLoc">Newcomb Rd N, Charlottesville, VA 22904</column>
-            <column name="AvgRating">5</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">0</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-        <table name="bathrooms">
-            <column name="ID">9</column>
-            <column name="bTitle">Argo Tea </column>
-            <column name="bDesc">Nice and clean bathroom, the automatic hand wash sucks at sensing though.</column>
-            <column name="bLoc">395 McCormick Rd, Charlottesville, VA 22904</column>
-            <column name="AvgRating">4</column>
-            <column name="GenderNeutral">0</column>
-            <column name="FemProducts">0</column>
-            <column name="PaperTowel">1</column>
-            <column name="AirDryer">0</column>
-            <column name="BreastFeed">0</column>
-            <column name="Diaper">0</column>
-        </table>
-    </database>
-</pma_xml_export>
+    <bath>
+        <ID>7</ID>
+        <bTitle>Monroe Hall entrance</bTitle>
+        <bDesc>old and cramped stall, can't even turn around in the stall</bDesc>
+        <bLoc>Monroe Hall Charlottesville, VA 22903</bLoc>
+        <AvgRating>0</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>1</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+
+    <bath>
+        <ID>8</ID>
+        <bTitle>Clemons Library 2nd Floor</bTitle>
+        <bDesc>new, clean and very modern look with provided tampons/pads in girl's bathroom!</bDesc>
+        <bLoc>Newcomb Rd N, Charlottesville, VA 22904</bLoc>
+        <AvgRating>5</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>0</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+
+    <bath>
+        <ID>9</ID>
+        <bTitle>Argo Tea</bTitle>
+        <bDesc>Nice and clean bathroom, the automatic hand wash sucks at sensing though.</bDesc>
+        <bLoc>395 McCormick Rd, Charlottesville, VA 22904</bLoc>
+        <AvgRating>4</AvgRating>
+        <GenderNeutral>0</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>0</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
+</bathrooms>
