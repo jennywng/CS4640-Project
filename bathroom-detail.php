@@ -69,6 +69,11 @@ if ($result -> num_rows > 0) {
 }
 
 
+setCookie() {
+    // get user id from current session
+    
+}
+
 $conn->close();
 
 ?>
@@ -191,7 +196,7 @@ $conn->close();
         <div class="container">
             <hr class="my-4">
             <!-- <h3>Write a Review</h3> -->
-            <button class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
+            <button onclick="<?php echo setCookie();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
         </div>
 
 
