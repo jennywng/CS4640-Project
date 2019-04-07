@@ -1,3 +1,53 @@
+<?php
+
+
+$bID = (int) $_GET['bID'];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "flushd";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn -> connect_error) {
+	die("Unable to connect to DB: " . $conn -> connect_error);
+}
+
+
+$get_bath_detail = "SELECT R.ID, B.bTitle, B.bLoc, B.bDesc, R.title, R.uID, R.rDesc, R.rating 
+FROM bathrooms B
+INNER JOIN reviews R ON R.bID = B.ID
+WHERE R.bID=$bID";
+
+
+$result = $conn->query($get_bath_detail);
+
+if ($result -> num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        extract($row);
+
+        $export[] = array('rID'=>$ID, 'bTitle'=>$bTitle, 'bLocation'=>$bLoc, 
+        'bDesc'=>$bDesc, 'rTitle'=>$title, 'rDesc'=>$rDesc, 'rating'=>$rating, 'uID'=>$uID);
+
+    }
+
+    $encode_export = array('bathroom-detail'=>$export);
+	echo json_encode($encode_export);
+
+} else {
+    echo 'No results';
+}
+
+
+$conn->close();
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,13 +75,9 @@
         <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/bathroom-detail.js"></script>
-
     </head>
 
-    <body onload="getBathroomDetail(getCookie('currentBathroomID'))">
+    <body>
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
               <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
@@ -130,7 +176,7 @@
 
         <div class="container" id='reviews'>
             <h3>Reviews</h3>
-            <div>
+            <div class="review-container">
             <hr class="my-4">
             <div class="media">
                 <img src="http://placehold.it/150x150" class="align-self-poot mr-3" alt="...">
@@ -141,37 +187,6 @@
                     <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 </div>
             </div>
-            </div>
-            
-            <hr class="my-4">
-            <div class="media">
-                    <img src="http://placehold.it/150x150" class="align-self-poot mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0">username</h5>
-                        <span class="fas fa-poo checked"></span><span class="usr-rating"> 2 </span>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    </div>
-            </div>
-            <hr class="my-4">
-            <div class="media">
-                    <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0">username</h5>
-                        <span class="fas fa-poo checked"></span><span class="usr-rating"> 4 </span>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    </div>
-            </div>
-            <hr class="my-4">
-            <div class="media">
-                    <img src="http://placehold.it/150x150" class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0">username</h5>
-                        <span class="fas fa-poo checked"></span><span class="avg-rating"> 4 </span>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    </div>
             </div>
         </div> 
     
@@ -261,7 +276,7 @@
         </div>
 
 
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 

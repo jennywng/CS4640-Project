@@ -9,33 +9,6 @@
     </div>
 </div> */}
 
-function stringToBoolean(val){
-    var a = {
-        '1':true,
-        '0':false
-    };
-    return a[val];
-}
-
-
-
-function setCookie(bID) {
-    if (document.cookie.indexOf("currentBathroomID=") >= 0) {
-        // delete previous cookie if there was one
-        var d2 = new Date();
-        d2.setTime(d2.getTime() - 7200);
-        var expires2 = "expires=" + d2.toUTCString();
-        document.cookie = "currentBathroomID=;" + expires2 + "; path=/;";
-    } else {
-        var d = new Date();
-        d.setTime(d.getTime() + 3600);
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = "currentBathroomID=" + bID + ";" + expires + "; path=/";
-    }
-}
-
-
-
 
 function createBathroomDiv(id, title, desc, loc, rating, gender, fem, paper, air, breast, diaper) {
     console.log("creating bathroom: " + id);
@@ -57,7 +30,7 @@ function createBathroomDiv(id, title, desc, loc, rating, gender, fem, paper, air
 
     var $divBody = $("<div>", {class: "media-body"});
 
-    var $a = $("<a>", {'class': 'bathroom-link', 'id': "bathroom" + id, 'value': id, 'href': "bathroom-profile.html", 'onclick': 'setCookie(' + id + ')'});
+    var $a = $("<a>", {'class': 'bathroom-link', 'id': "bathroom" + id, 'value': id, 'href': "bathroom-detail.php?bID=" + id});
     var $h5 = $("<h5>", {class: "mt-0"});
     $h5.text(title);
     $h5.appendTo($a);
