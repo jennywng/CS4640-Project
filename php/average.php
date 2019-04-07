@@ -5,16 +5,16 @@ For every bathroom in the DB, get all the reviews for that bathroom and calculat
 then update the bathrooms table w. the new average rating
  */
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "flushd";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "flushd";
 
-// create connection to database
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn -> connect_error) {
-	die("Unable to connect to DB: " . $conn -> connect_error);
-}
+// // create connection to database
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// if ($conn -> connect_error) {
+// 	die("Unable to connect to DB: " . $conn -> connect_error);
+// }
 
 $numBathrooms = 0;
 
@@ -30,7 +30,7 @@ if ($result -> num_rows > 0) {
         $bathroomIDs[] = $ID;
     }
 } else {
-    echo 'No results';
+    // echo 'No results';
 }
 
 foreach ($bathroomIDs as $bID) {
@@ -48,19 +48,19 @@ foreach ($bathroomIDs as $bID) {
             $ratings[] = $rating;
         }
         $avg = array_sum($ratings)/count($ratings);
-        echo $avg . '<br>';
+        // echo $avg . '<br>';
 
         $insertAvg = "UPDATE bathrooms SET AvgRating=$avg WHERE ID=$bID";
         if ($conn->query($insertAvg) === TRUE) {
-            echo "Record updated successfully";
+            // echo "Record updated successfully";
         } else {
-            echo "Error updating record: " . $conn->error;
+            // echo "Error updating record: " . $conn->error;
         }
     } else {
-        echo 0 . '<br>';
+        // echo 0 . '<br>';
     }
 }
 
 
-$conn->close();
+// $conn->close();
 ?>
