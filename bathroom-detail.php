@@ -210,7 +210,7 @@ $conn->close();
     
         <div class="container">
             <!-- <h3>Write a Review</h3> -->
-            <button onclick="<?php echo setCookie();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
+            <button onclick="<?php echo setCookieForReview();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
         </div>
 
 
