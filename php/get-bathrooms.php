@@ -12,7 +12,7 @@ if ($conn -> connect_error) {
 
 
 
-$get_all_bathrooms = "SELECT ID, title, location, description, AvgRating, GenderNeutral, FemProducts, PaperTowel, AirDryer, BreastFeed, Diaper
+$get_all_bathrooms = "SELECT ID, bTitle, bLoc, bDesc, AvgRating, GenderNeutral, FemProducts, PaperTowel, AirDryer, BreastFeed, Diaper
  from bathrooms";
 
 
@@ -25,8 +25,8 @@ if ($result -> num_rows > 0) {
 
         $AvgRating = round($AvgRating, 2);
 
-        $export[] = array('bID'=>$ID, 'title'=>$title, 'location'=>$location, 
-        'description'=>$description, 'avgRating'=>$AvgRating, 
+        $export[] = array('bID'=>$ID, 'title'=>$bTitle, 'location'=>$bLoc, 
+        'description'=>$bDesc, 'avgRating'=>$AvgRating, 
         'genderN'=>$GenderNeutral, 'femP'=>$FemProducts, 'paper'=>$PaperTowel, 'air'=>$AirDryer,
         'breast'=>$BreastFeed, 'diaper'=>$Diaper);
     }

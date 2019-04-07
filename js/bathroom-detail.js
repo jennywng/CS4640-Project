@@ -9,7 +9,7 @@ function createReviewDiv(id, title, desc, loc, rating) {
 
     var $divBody = $("<div>", {class: "media-body"});
 
-    var $a = $("<a>");
+    var $a = $("<a>", {'class': 'bathroom-link', 'id': id, 'value': id});
     var $h5 = $("<h5>", {class: "mt-0"});
     $h5.text(title);
     $h5.appendTo($a);
@@ -41,21 +41,39 @@ function createReviewDiv(id, title, desc, loc, rating) {
 }
 
 
-function getBathrooms() {
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
+var bathID = getCookie('currentBathroomID');
+
+function getBathroomDetail(bID) {
     var $bathroomListEle = $("#bathroomlist");
     
     $.ajax({
-        url: 'php/get-bathrooms.php',
-        type: 'POST',
-        dataType: 'json',
+        url: 'php/get-bathroom-detail.php',
+        type: 'GET',
+        data: {
+            'bathroomID': bID,
+        },
         success: function(data) {
-            var bathrooms = data.all_bathrooms_data;
-            bathrooms.forEach((item) => {
-                console.log(item.rating);
-                var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.rating);
-                $bathroomListEle.append(bath);
-              });
-
+            if (data === 'No results' || data === 'error, no user') {
+                console.log(data);
+            } else {
+                console.log(JSON.parse(data));
+            }
         }
     }); 
 }

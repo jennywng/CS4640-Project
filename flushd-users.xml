@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.4
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Apr 07, 2019 at 04:27 PM
+- Server version: 10.1.37-MariaDB
+- PHP Version: 7.3.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="flushd" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `ID` int(6) NOT NULL AUTO_INCREMENT,
+                  `firstname` varchar(50) NOT NULL,
+                  `lastname` varchar(50) NOT NULL,
+                  `username` varchar(50) NOT NULL,
+                  `email` varchar(100) NOT NULL,
+                  `pwd` varchar(100) NOT NULL,
+                  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date the user registered',
+                  `profilepic` varchar(100) DEFAULT NULL,
+                  `admin` tinyint(1) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'flushd'
+    -->
+    <database name="flushd">
+        <!-- Table users -->
+        <table name="users">
+            <column name="ID">1</column>
+            <column name="firstname">Amber</column>
+            <column name="lastname">Liu</column>
+            <column name="username"></column>
+            <column name="email">reamber.liu@gmail.com</column>
+            <column name="pwd">$2y$10$5DZmztcMUK8viAxtnHamauVfR6IDXMuKXThj5nVtPX2vMj2UW/eGa</column>
+            <column name="reg_date">2019-04-03 18:49:13</column>
+            <column name="profilepic">NULL</column>
+            <column name="admin">0</column>
+        </table>
+        <table name="users">
+            <column name="ID">2</column>
+            <column name="firstname">Jenny</column>
+            <column name="lastname">Wang</column>
+            <column name="username"></column>
+            <column name="email">jenny.wang9812@gmail.com</column>
+            <column name="pwd">$2y$10$x.QQtK6w.LiU4DCVKdW7huPsdQkCcz4aedpnrwAhcufZuXw5ubWvW</column>
+            <column name="reg_date">2019-04-04 16:10:31</column>
+            <column name="profilepic">uploads/2rsz_peach.jpg</column>
+            <column name="admin">0</column>
+        </table>
+        <table name="users">
+            <column name="ID">3</column>
+            <column name="firstname">wuxin</column>
+            <column name="lastname">zeng</column>
+            <column name="username"></column>
+            <column name="email">wz4up@virgnia.edu</column>
+            <column name="pwd">$2y$10$E3OLkB6TXMdl.KDeEMAR0eqZfRMPy.qoABqd5fh/enUwfG2S0X9VO</column>
+            <column name="reg_date">2019-04-04 18:02:07</column>
+            <column name="profilepic">NULL</column>
+            <column name="admin">0</column>
+        </table>
+        <table name="users">
+            <column name="ID">4</column>
+            <column name="firstname">wuxin</column>
+            <column name="lastname">zeng</column>
+            <column name="username"></column>
+            <column name="email">angelinezeng1997@gmail.com</column>
+            <column name="pwd">$2y$10$EoG7rzFFvd3I9G.H8tMvP.ribpMEdjZlfdayGwdhl77v2gdDu3ymC</column>
+            <column name="reg_date">2019-04-04 18:03:10</column>
+            <column name="profilepic">NULL</column>
+            <column name="admin">0</column>
+        </table>
+        <table name="users">
+            <column name="ID">5</column>
+            <column name="firstname">Vivien</column>
+            <column name="lastname">Chen</column>
+            <column name="username"></column>
+            <column name="email">vc2cw@virginia.edu</column>
+            <column name="pwd">$2y$10$0RD19DK1jPq0umpOdgeRCurlsSTC/qC2bdQyTorSK0MEsR52A/ry6</column>
+            <column name="reg_date">2019-04-06 17:30:49</column>
+            <column name="profilepic">NULL</column>
+            <column name="admin">0</column>
+        </table>
+    </database>
+</pma_xml_export>

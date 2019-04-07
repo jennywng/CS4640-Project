@@ -16,7 +16,36 @@
         <rating>5.0</rating>
         <description>So blessed. so moved. so grateful. cant believe this is my life.  </description>
     </review>
-</review>
+</reviews>
 
 
 
+<bathrooms>
+    <bath>
+        <title>Rice Hall 1st Floor</title>
+        <id>1</id>
+        <genderTag>0<genderTag>
+        <prodTag>0</prodTag>
+        <paperTag>1</paperTag>
+        <airTag>0</airTag>
+        <breastTag>0</breastTag>
+        <diaperTag>0</diaperTag>
+        <reviews>
+            <review>
+                <uID>2<uID>
+                <bID>1<bID>
+                <title>Blegh</title>
+                <rDesc></rDesc>
+                <rating>2</rating>
+            </review>
+            <review>
+                <uID>2<uID>
+                <bID>1<bID>
+                <title>Blegh</title>
+                <rDesc></rDesc>
+                <rating>2</rating>
+            </review>
+        </reviews>
+    </bath>
+
+</bathrooms>

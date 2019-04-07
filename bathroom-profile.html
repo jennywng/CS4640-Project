@@ -25,9 +25,13 @@
         <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/bathroom-detail.js"></script>
+
     </head>
 
-    <body>
+    <body onload="getBathroomDetail(getCookie('currentBathroomID'))">
         <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
             <a class="navbar-brand" href="user-home.html">
               <img src="images/FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
@@ -63,23 +67,28 @@
         <hr class="my-4">
 
         <div class="container" id="bathroomInfo">
-            <h2>Rice Hall First Floor</h2>
+            <h2 id="bathroom-title"></h2>
             <hr class="my-4">
 
             <div class="row">
                 <div class="col left-col">
-                        <span class="fas fa-poo checked"></span>
-                        <span class="fas fa-poo checked"></span>
-                        <span class="fas fa-poo checked"></span>
-                        <span class="fas fa-poo"></span>
-                        <span class="fas fa-poo"></span>
-                        <span>  3.47 of 5</span>
-                        <p>85 Engineer's Way, Charlottesville, VA 22903 </p>
+                        <span class="fas fa-poo checked" id="poo-rating1"></span>
+                        <span class="fas fa-poo checked" id="poo-rating2"></span>
+                        <span class="fas fa-poo checked" id="poo-rating3"></span>
+                        <span class="fas fa-poo" id="poo-rating4"></span>
+                        <span class="fas fa-poo" id="poo-rating5"></span>
+                        <span id="avg-rating"> </span>
+                        <p id="bath-address"></p>
                 </div>
                 <div class="col right-col">
-                    <i class="fas fa-check"></i><span> Gender Neutral</span><br>
-                    <i class="fas fa-times"></i><span> Family</span><br>
-                    <i class="fas fa-check"></i><span> Handicap</span><br>
+                    <i class="fas fa-times" id="gender-icon"></i><span> Gender Neutral</span><br>
+                    <i class="fas fa-times" id="fem-icon"></i><span> Feminine Products Available</span><br>
+                    <i class="fas fa-times" id="paper-icon"></i><span> Paper Towel</span><br>
+                    <i class="fas fa-times" id="air-icon"></i><span> Air Dryer</span><br>
+                    <i class="fas fa-times" id="breast-icon"></i><span> Breast Feeding Area</span><br>
+                    <i class="fas fa-times" id="diaper-icon"></i><span> Baby Diaper Change</span><br>
+                    
+
                 </div>
             </div>
 
@@ -121,6 +130,7 @@
 
         <div class="container" id='reviews'>
             <h3>Reviews</h3>
+            <div>
             <hr class="my-4">
             <div class="media">
                 <img src="http://placehold.it/150x150" class="align-self-poot mr-3" alt="...">
@@ -131,6 +141,8 @@
                     <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 </div>
             </div>
+            </div>
+            
             <hr class="my-4">
             <div class="media">
                     <img src="http://placehold.it/150x150" class="align-self-poot mr-3" alt="...">
@@ -250,9 +262,6 @@
 
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
