@@ -1,3 +1,40 @@
+<?php 
+$message = "";
+
+$bathID = (int) $_COOKIE['bID'];
+$userID = (int) $_COOKIE['uID'];
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "flushd";
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title =  (string) $_POST['review-title'];
+    $text =  (string) $_POST['review-text'];
+    $rating = (int) $_POST['poo'];
+
+    $insert_review = "INSERT INTO reviews (uID, bID, title, rDesc, rating) VALUES ($userID, $bathID, '$title', '$text', $rating)";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn -> connect_error) {
+	    die("Unable to connect to DB: " . $conn -> connect_error);
+    }
+
+    if ($conn->query($insert_review) === TRUE) {
+        $message = "Review submitted successfully";
+        require_once('php/average.php');
+    } else {
+        $message = "Error: " . $insert_review . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,41 +103,37 @@
         <div class="container">
             <h3>Write a Review</h3>
             <div class="container">
-                <form>
+                <form action="" method="post">
                     <div class="form-group">
                         <label><i class="fas fa-upload"></i> Upload Bathroom Picture</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>
 
-                    <!-- <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose picture</label>
-                    </div> -->
-                    <div class="rating">
+                    <div class="rating form-group" name="rating">
                     <label>
-                        <input type="radio" name="stars" value="1" />
+                        <input type="radio" name="poo" value=1 required/>
                         <span class="fas fa-poo icon"></span>
                     </label>
                     <label>
-                        <input type="radio" name="stars" value="2" />
+                        <input type="radio" name="poo" value=3 />
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                     </label>
                     <label>
-                        <input type="radio" name="stars" value="3" />
+                        <input type="radio" name="poo" value=3 />
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>  
                     </label>
                     <label>
-                        <input type="radio" name="stars" value="4" />
+                        <input type="radio" name="poo" value=4 />
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                     </label>
                     <label>
-                        <input type="radio" name="stars" value="5" />
+                        <input type="radio" name="poo" value=5/>
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
                         <span class="fas fa-poo icon"></span>
@@ -108,42 +141,20 @@
                         <span class="fas fa-poo icon"></span>
                     </label>
                     </div>
-
-                    <div></div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">Gender Neutral</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">Feminine Products Available</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Paper Towel</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Air Dryer</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Breast Feeding Area</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">Diaper Changing Area</label>
-                    </div>
-
+                    
                     <div class="form-group">
-                        <label for="review">Review</label>
-                        <textarea class="form-control" id="review-text" rows="5" placeholder="Review"></textarea>
+                        <textarea name="review-title" class="form-control" id="review-title" rows="1" placeholder="Title" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <textarea name="review-text" class="form-control" id="review-text" rows="5" placeholder="Review" required></textarea>
+                    </div>
+
+                    <input type="submit" id="reviewFormSubmitBtn" class="btn btn-primary" value="Submit">
                 </form>
-                <button class="btn btn-primary" id="reviewFormSubmitBtn">Submit</button>   
+
+
+                <p> <?php echo $message ?> </p>
+                <!-- <button class="btn btn-primary" id="reviewFormSubmitBtn">Submit</button>    -->
             </div>
         </div>
 
@@ -162,44 +173,4 @@
 
 
 
-<?php 
-
-$bID = (int) $_COOKIE['bID'];
-$uID = (int) $_COOKIE['uID'];
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "flushd";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn -> connect_error) {
-	die("Unable to connect to DB: " . $conn -> connect_error);
-}
-
-
-$get_bath_detail = "";
-
-
-$result = $conn->query($get_bath_detail);
-
-if ($result -> num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        extract($row);
-
-
-    }
-
-    $encode_export = array('bathroom-detail'=>$export);
-	echo json_encode($encode_export);
-
-} else {
-    echo 'No results';
-}
-
-
-$conn->close();
-
-?>
 
