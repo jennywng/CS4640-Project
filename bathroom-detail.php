@@ -1,3 +1,13 @@
+<?php 
+function setCookieForReview() {
+    // get user id from current session
+    echo 'test';
+    header('submit-review.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,12 +87,6 @@ if ($result -> num_rows > 0) {
 } else {
     echo 'No results';
 }
-
-
-// setCookie() {
-//     // get user id from current session
-
-// }
 
 
 $conn->close();
