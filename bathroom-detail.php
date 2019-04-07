@@ -1,13 +1,3 @@
-<?php 
-function setCookieForReview() {
-    // get user id from current session
-    
-    echo 'test';
-    header('submit-review.php');
-}
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +34,12 @@ function setCookieForReview() {
 
 $bID = (int) $_GET['bID'];
 
+
+session_start();
+
+setCookie("uID", $_SESSION['uid'], time()+3600);
+setCookie("bID", $bID, time()+3600);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -53,6 +49,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn -> connect_error) {
 	die("Unable to connect to DB: " . $conn -> connect_error);
 }
+
+
 
 
 $get_bath_detail = "SELECT bTitle, AvgRating, bLoc, bDesc 
@@ -211,7 +209,7 @@ $conn->close();
     
         <div class="container">
             <!-- <h3>Write a Review</h3> -->
-            <a href="submit-review.php" onclick="<?php setCookieForReview();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</a>   
+            <a href="submit-review.php" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</a>   
         </div>
 
 
