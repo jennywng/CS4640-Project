@@ -124,7 +124,9 @@ $conn->close();
         <!-- <div class="row"> -->
         <h3>User Information: </h3>
         <br>
-        <h4><?php echo "UserID: ". $ID ;?></h4>
+        <h4><?php echo "Username: ". $firstname . $lastname . $ID ;?></h4>
+        <br>
+        <h4><?php echo "Email: ". $email ;?></h4>
         <br>
         <h4><?php echo "Email: ". $email ;?></h4>
         <br>
