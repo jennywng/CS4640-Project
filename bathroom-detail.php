@@ -44,35 +44,46 @@ if ($conn -> connect_error) {
 }
 
 
-$get_bath_detail = "SELECT R.ID, B.bTitle, B.bLoc, B.bDesc, R.title, R.uID, R.rDesc, R.rating 
+$get_bath_detail = "SELECT bTitle, AvgRating, bLoc, bDesc 
 FROM bathrooms B
-INNER JOIN reviews R ON R.bID = B.ID
-WHERE R.bID=$bID";
+WHERE ID=$bID";
 
 
 $result = $conn->query($get_bath_detail);
 
 if ($result -> num_rows > 0) {
+    $row = $result->fetch_assoc();
+    extract($row);
+} else {
+    echo 'No results';
+}
+
+$get_reviews = "SELECT R.ID, R.title, R.uID, R.rDesc, R.rating, U.firstname, U.lastname, U.profilepic 
+FROM bathrooms B
+INNER JOIN reviews R ON R.bID = B.ID
+INNER JOIN users U ON R.uID = U.ID
+WHERE R.bID=$bID";
+
+
+$result = $conn->query($get_reviews);
+
+if ($result -> num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         extract($row);
-
-        $export[] = array('rID'=>$ID, 'bTitle'=>$bTitle, 'bLocation'=>$bLoc, 
-        'bDesc'=>$bDesc, 'rTitle'=>$title, 'rDesc'=>$rDesc, 'rating'=>$rating, 'uID'=>$uID);
-
+        $reviews[] = array('rID'=>$ID,'rTitle'=>$title, 'rDesc'=>$rDesc, 'rating'=>$rating, 'uID'=>$uID,
+         'fname'=>$firstname, 'lname'=>$lastname, 'profilepic'=>$profilepic);
     }
-
-    $encode_export = array('bathroom-detail'=>$export);
-	echo json_encode($encode_export);
 
 } else {
     echo 'No results';
 }
 
 
-setCookie() {
-    // get user id from current session
-    
-}
+// setCookie() {
+//     // get user id from current session
+
+// }
+
 
 $conn->close();
 
@@ -117,18 +128,15 @@ $conn->close();
         <hr class="my-4">
 
         <div class="container" id="bathroomInfo">
-            <h2 id="bathroom-title"></h2>
+            <h2 id="bathroom-title"><?php echo $bTitle;?></h2>
             <hr class="my-4">
 
             <div class="row">
                 <div class="col left-col">
                         <span class="fas fa-poo checked" id="poo-rating1"></span>
-                        <span class="fas fa-poo checked" id="poo-rating2"></span>
-                        <span class="fas fa-poo checked" id="poo-rating3"></span>
-                        <span class="fas fa-poo" id="poo-rating4"></span>
-                        <span class="fas fa-poo" id="poo-rating5"></span>
-                        <span id="avg-rating"> </span>
-                        <p id="bath-address"></p>
+                        <span id="avg-rating"><?php echo round($AvgRating, 2); ?></span>
+                        <p id="bath-address"><?php echo $bLoc;?></p>
+                        <p id="bath-desc"><?php echo $bDesc?></p>
                 </div>
                 <div class="col right-col">
                     <i class="fas fa-times" id="gender-icon"></i><span> Gender Neutral</span><br>
@@ -137,8 +145,6 @@ $conn->close();
                     <i class="fas fa-times" id="air-icon"></i><span> Air Dryer</span><br>
                     <i class="fas fa-times" id="breast-icon"></i><span> Breast Feeding Area</span><br>
                     <i class="fas fa-times" id="diaper-icon"></i><span> Baby Diaper Change</span><br>
-                    
-
                 </div>
             </div>
 
@@ -173,28 +179,32 @@ $conn->close();
             <hr class="my-4">
         </div>
 
-        
-
-        
-
         <div class="container" id='reviews'>
             <h3>Reviews</h3>
+            
             <div class="review-container">
             <hr class="my-4">
+
+            <?php foreach ($reviews as $review) { ?>
+            
+            <div class="review">
             <div class="media">
-                <img src="http://placehold.it/150x150" class="align-self-poot mr-3" alt="...">
+                <img src="<?php if ($review['profilepic'] != null) {echo $review['profilepic'];} else {echo 'images/defaulticon.png';}?>" 
+                style="width: 10rem; height: 10rem;" class="align-self-start mr-3 image-fluid" alt="...">
                 <div class="media-body">
-                    <h5 class="mt-0">username</h5>
-                    <span class="fas fa-poo checked"></span><span class="usr-rating"> 3 </span>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <h5 class="mt-0"><?php echo $review['fname'] . ' ' . $review['lname'];?></h5>
+                    <span class="fas fa-poo checked"></span><span class="usr-rating"> <?php echo $review['rating'] ?> </span>
+                    <p><?php echo $review['rDesc'] ?></p>
                 </div>
             </div>
+            <hr class="my-4">
+            </div>
+
+            <?php } ?> <!-- end for loop  -->
             </div>
         </div> 
     
         <div class="container">
-            <hr class="my-4">
             <!-- <h3>Write a Review</h3> -->
             <button onclick="<?php echo setCookie();?>" class="btn btn-primary" id="reviewFormSubmitBtn">Write a Review</button>   
         </div>

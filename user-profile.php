@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
+
+        <meta charset="utf-8">
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+            
+            <!-- make browser window responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/user-home-style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+        <!-- <link rel="manifest" href="favicons/site.webmanifest"> -->
+        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#603cba">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+
 <?php
 
 session_start();
@@ -37,34 +66,6 @@ setcookie('userprofile', $profilepic, (time() + (3600*2)));
 
 $conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-        <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
-
-        <meta charset="utf-8">
-    
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
-            
-            <!-- make browser window responsive -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-            
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/user-home-style.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-
-        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-        <!-- <link rel="manifest" href="favicons/site.webmanifest"> -->
-        <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#603cba">
-        <meta name="theme-color" content="#ffffff">
-    </head>
 
 
 
@@ -112,7 +113,7 @@ $conn->close();
                     </h1>
                 </div>
                 <div class="col-6 text-right">
-                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src=<?php echo $profilepic; ?>>
+                        <img class="rounded-circle" style="width:40%; margin-top:-5%; margin-right:30%" src=<?php if ($profilepic != null) {echo $profilepic;} else {echo 'images/defaulticon.png';} ?>>
                 </div>
             </div>
         </div>
