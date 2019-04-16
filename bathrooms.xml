@@ -133,4 +133,18 @@
         <BreastFeed>0</BreastFeed>
         <Diaper>0</Diaper>
     </bath>
+
+        <bath>
+        <ID>10</ID>
+        <bTitle>Chemistry Building</bTitle>
+        <bDesc>Nice and clean bathroom, the automatic hand wash sucks at sensing though.</bDesc>
+        <bLoc>395 McCormick Rd, Charlottesville, VA 22904</bLoc>
+        <AvgRating>5</AvgRating>
+        <GenderNeutral>1</GenderNeutral>
+        <FemProducts>0</FemProducts>
+        <PaperTowel>1</PaperTowel>
+        <AirDryer>1</AirDryer>
+        <BreastFeed>0</BreastFeed>
+        <Diaper>0</Diaper>
+    </bath>
 </bathrooms>

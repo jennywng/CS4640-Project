@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <textarea name="review-title" class="form-control" id="review-title" rows="1" placeholder="Title" required></textarea>
                     </div>
                     <div class="form-group">
-                        <textarea name="review-text" class="form-control" id="review-text" rows="5" placeholder="Review" required></textarea>
+                        <textarea name="review-text" class="form-control" id="review-text" rows="5" placeholder="Review" maxlength="300" required></textarea>
                     </div>
 
                     <input type="submit" id="reviewFormSubmitBtn" class="btn btn-primary" value="Submit">

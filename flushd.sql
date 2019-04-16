@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2019 at 09:18 PM
+-- Generation Time: Apr 16, 2019 at 03:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -48,7 +48,7 @@ CREATE TABLE `bathrooms` (
 
 INSERT INTO `bathrooms` (`ID`, `bTitle`, `bDesc`, `bLoc`, `AvgRating`, `GenderNeutral`, `FemProducts`, `PaperTowel`, `AirDryer`, `BreastFeed`, `Diaper`) VALUES
 (0, 'Olsson 1st Floor', 'wide spacious gender neutral bathroom but only one stall', '151 Engineer\'s Way, Charlottesville, VA 22903', 4, 0, 0, 1, 0, 0, 0),
-(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904', 1.66667, 0, 0, 1, 0, 0, 0),
+(1, 'Physics Building 3rd Floor', 'Old, small and cramped stalls', '382 McCormick Rd, Charlottesville, VA 22904', 2, 0, 0, 1, 0, 0, 0),
 (2, 'Rice Hall 1st Floor', 'Clean, fairly open space bathroom with 4 stalls.', '85 Engineer\'s Way, Charlottesville, VA 22903', 3, 0, 0, 1, 0, 0, 0),
 (3, 'Newcomb Dining', 'Only accessible after swiping in, clean and new restroom stalls', '180 McCormick Rd, Charlottesville, VA 22903', 0, 0, 0, 1, 1, 0, 0),
 (4, 'Clark 1st Floor', 'Nice bathroom but very busy when classes end.', '291 McCormick Rd, Charlottesville, VA 22903', 2, 0, 1, 0, 1, 0, 0),
@@ -56,7 +56,8 @@ INSERT INTO `bathrooms` (`ID`, `bTitle`, `bDesc`, `bLoc`, `AvgRating`, `GenderNe
 (6, 'Bryant Hall 4th floor', 'Elegant and comfortable space, accessible in student lounge when you have interviews', '1815 Stadium Rd, Charlottesville, VA 22903', 0, 0, 0, 0, 0, 0, 0),
 (7, 'Monroe Hall entrance', 'old and cramped stall, can\'t even turn around in the stall', 'Monroe Hall Charlottesville, VA 22903', 1, 0, 0, 1, 1, 0, 0),
 (8, 'Clemons Library 2nd Floor', 'new, clean and very modern look with provided tampons/pads in girl\'s bathroom!', 'Newcomb Rd N, Charlottesville, VA 22904', 5, 0, 0, 0, 0, 0, 0),
-(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904', 4, 0, 0, 1, 0, 0, 0);
+(9, 'Argo Tea ', 'Nice and clean bathroom, the automatic hand wash sucks at sensing though.', '395 McCormick Rd, Charlottesville, VA 22904', 4, 0, 0, 1, 0, 0, 0),
+(10, 'Chemsitry Building 1st Floor', 'Single person restrooms', '409 McCormick Rd, Charlottesville, VA 22904', 5, 1, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,9 @@ INSERT INTO `reviews` (`ID`, `uID`, `bID`, `title`, `rDesc`, `rating`) VALUES
 (7, 5, 4, 'Gross and disgusting', 'I hate this bathroom', 2),
 (8, 5, 0, 'Nice bathroom', 'Clean and a good size, has lots of stalls. Well-lit', 4),
 (9, 5, 7, 'Cramped', 'I hate it', 1),
-(10, 5, 2, 'Decent', 'Okay bathroom with good number of stalls, large space. But it has dim lighting, and can get dirty during the day.', 3);
+(10, 5, 2, 'Decent', 'Okay bathroom with good number of stalls, large space. But it has dim lighting, and can get dirty during the day.', 3),
+(11, 2, 1, 'kgvkgv', 'kgvkugv', 3),
+(12, 2, 10, 'Great', 'There are 2 of those single person bathrooms on the first floor of the new chemistry building (in the hallway going toward PLSB). They are very clean, and well lit.', 5);
 
 -- --------------------------------------------------------
 
@@ -164,7 +167,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tags`
