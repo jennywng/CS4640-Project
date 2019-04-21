@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $message =  "Error updating record: " . $conn->error;
             }			
 		} else {
-			$message =  "File can not be uploaded";
+			$message =  "File cannot be uploaded";
 		}
     }
 }
@@ -171,13 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <?php echo $firstname . $lastname . $ID;?>
                 </div>
             </div>
-            <!-- <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div> -->
 
             <input type="submit" class="btn" value="Submit">   
 
+            <br>
             <p><?php echo $message ?></p>
 
         </form>
