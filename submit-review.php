@@ -1,4 +1,6 @@
 <?php 
+require_once("php/checkfile.php");
+
 $message = "";
 
 $bathID = (int) $_COOKIE['bID'];
@@ -11,27 +13,159 @@ $password = "";
 $dbname = "flushd";
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title =  (string) $_POST['review-title'];
-    $text =  (string) $_POST['review-text'];
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    $title = (string) $_POST['review-title'];
+    $text = (string) $_POST['review-text'];
     $rating = (int) $_POST['poo'];
 
-    $insert_review = "INSERT INTO reviews (uID, bID, title, rDesc, rating) VALUES ($userID, $bathID, '$title', '$text', $rating)";
+    if (isset($_FILES['upload'])) {
+        $file_name = $userID . $_FILES['upload']['name'];
+        $file_type = $_FILES['upload']['type'];
+        $file_tmp_name = $_FILES['upload']['tmp_name'];
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn -> connect_error) {
-	    die("Unable to connect to DB: " . $conn -> connect_error);
+        $file_size = $_FILES['upload']['size'];
+        $target_dir = "uploads/";
+
+        echo "file_tmp_name: $file_tmp_name";
+        echo var_dump($_FILES);
+        echo $_FILES['upload']['error'];
+
+        $x = $target_dir . $file_name;
+        if(rename($file_tmp_name, $target_dir.$file_name)) {
+			// connect to database
+			$servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "flushd";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn -> connect_error) {
+	            die("Unable to connect to DB: " . $conn -> connect_error);
+            }
+
+            $q = "INSERT INTO reviews (uID, bID, title, rDesc, rating, imgURL) VALUES 
+            ($userID, $bathID, '$title', '$text', $rating, 'uploads/$file_name')";
+            if ($conn->query($q) === TRUE) {
+                $message =  "Review submitted.";
+                require_once("php/average.php");
+            } else {
+                $message =  "Error updating record: " . $conn->error;
+            }
+            
+            $conn->close();
+		} else {
+			$message =  "File cannot be uploaded";
+		}
     }
-
-    if ($conn->query($insert_review) === TRUE) {
-        $message = "Review submitted successfully";
-        require_once('php/average.php');
-    } else {
-        $message = "Error: " . $insert_review . "<br>" . $conn->error;
-    }
-
-    $conn->close();
 }
+
+
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     $title =  (string) $_POST['review-title'];
+//     $text =  (string) $_POST['review-text'];
+//     $rating = (int) $_POST['poo'];
+
+//     $servername = "localhost";
+//     $username = "root";
+//     $password = "";
+//     $dbname = "flushd";
+
+//     $conn = new mysqli($servername, $username, $password, $dbname);
+//     if ($conn -> connect_error) {
+//         die("Unable to connect to DB: " . $conn -> connect_error);
+//     }
+
+
+//     if (isset($_FILES['upload'])) {
+//         $target_dir = "uploads/";
+//         $target_file = $target_dir . basename($_FILES["upload"]["name"]);
+//         $uploadOk = 1;
+//         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        
+//         // Check if image file is a actual image or fake image
+//         // if(isset($_POST["submit"])) {
+//         //     $check = getimagesize($_FILES["upload"]["tmp_name"]);
+//         //     if($check !== false) {
+//         //         $message = "File is an image - " . $check["mime"] . ".";
+//         //         $uploadOk = 1;
+//         //     } else {
+//         //         $message = "File is not an image.";
+//         //         $uploadOk = 0;
+//         //     }
+//         // }
+//         // Check if file already exists
+//         if (file_exists($target_file)) {
+//             $message = "Sorry, file already exists.";
+//             $uploadOk = 0;
+//         }
+//         // Check file size
+//         if ($_FILES["upload"]["size"] > 30000) {
+//             $message = "Sorry, your file is too large.";
+//             $uploadOk = 0;
+//         }
+//         // Allow certain file formats
+//         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//         && $imageFileType != "gif" ) {
+//             $message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//             $uploadOk = 0;
+//         }
+//         // Check if $uploadOk is set to 0 by an error
+//         if ($uploadOk == 0) {
+//             $message = "Sorry, your file was not uploaded.";
+//         // if everything is ok, try to upload file
+//         } else {
+//             if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
+//                 $insert_review = "INSERT INTO reviews (uID, bID, title, rDesc, rating, imgURL) 
+//                 VALUES ($userID, $bathID, '$title', '$text', $rating, $target_file)";
+//                 if ($conn->query($insert_review) === TRUE) {
+//                     $message = "Review submitted successfully";
+//                     require_once('php/average.php');
+//                 } else {
+//                     $message = "Error: " . $insert_review . "<br>" . $conn->error;
+//                 }
+//             } else {
+//                 $message = "Sorry, there was an error uploading your file.";
+//             }
+//         }
+        
+    
+//         // $file_name = $userID . $_FILES['upload']['name'];
+//         // $file_type = $_FILES['upload']['type'];
+// 		// $file_tmp_name = $_FILES['upload']['tmp_name'];
+//         // $file_size = $_FILES['upload']['size'];
+//         // $target_dir = "uploads/";
+
+//         // echo $file_tmp_name;
+//         // echo $target_dir.$file_name;
+
+//         // if(move_uploaded_file($file_tmp_name, $target_dir.$file_name)) {
+//         //     // query
+//         //     $insert_review = "INSERT INTO reviews (uID, bID, title, rDesc, rating, imgURL) 
+//         //     VALUES ($userID, $bathID, '$title', '$text', $rating, $target_dir.$file_name)";
+
+//         //     if ($conn->query($insert_review) === TRUE) {
+//         //         $message = "Review submitted successfully";
+//         //         require_once('php/average.php');
+//         //     } else {
+//         //         $message = "Error: " . $insert_review . "<br>" . $conn->error;
+//         //     }			
+//     } else {
+//         // if user doesn't upload a picture
+//         $insert_review = "INSERT INTO reviews (uID, bID, title, rDesc, rating, imgURL) 
+//         VALUES ($userID, $bathID, '$title', '$text', $rating, null)";
+
+//         if ($conn->query($insert_review) === TRUE) {
+//             $message = "Review submitted successfully";
+//             require_once('php/average.php');
+//         } else {
+//             $message = "Error: " . $insert_review . "<br>" . $conn->error;
+//         }
+//     }
+
+
+    // $conn->close();
+// }
 
 ?>
 
@@ -99,10 +233,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container">
             <h3>Write a Review</h3>
             <div class="container">
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label><i class="fas fa-upload"></i> Upload Bathroom Picture</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="20000000"/>
+                        <input type="file" name="upload" class="form-control-file" id="exampleFormControlFile1">
                     </div>
 
                     <div class="rating form-group" name="rating">
@@ -145,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <textarea name="review-text" class="form-control" id="review-text" rows="5" placeholder="Review" maxlength="300" required></textarea>
                     </div>
 
-                    <input type="submit" id="reviewFormSubmitBtn" class="btn btn-primary" value="Submit">
+                    <input type="submit" id="reviewFormSubmitBtn" name="submit" class="btn btn-primary" value="Submit">
                 </form>
 
 
