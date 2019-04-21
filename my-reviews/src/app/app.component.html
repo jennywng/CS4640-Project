@@ -1,27 +1,72 @@
-<nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
-  <a class="navbar-brand" href="../../../user-home.html">
-    <img src="../FLUSHD_logo.PNG" width="50" height="50" class="d-inline-block align-top" alt="logo">
-  </a>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+    <!-- <base href="/"> -->
+</head>
 
-      <!-- make a hamburger menu when window is narrow -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon">
-          <i class="fas fa-bars"></i>
-      </span>
-  </button>
-      
-      <!-- collapse class available in Bootstrap, hide upon collapse -->
-  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-      <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" id="profile-link" href="../../../user-profile.php">Profile</a>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg" id="mainNav">
+    <a class="navbar-brand" href="../../../user-home.html">
+      <img src="assets/images/FLUSHD_logo.png" width="50" height="50" class="d-inline-block align-top" alt="logo">
+    </a>
+
+        <!-- make a hamburger menu when window is narrow -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon">
+            <i class="fas fa-bars"></i>
+        </span>
+    </button>
+        
+        <!-- collapse class available in Bootstrap, hide upon collapse -->
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" id="profile-link" href="user-profile.php">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" id="reviews-link" href="#">My Reviews</a>
+            </li>         
+        </ul>
+    </div>  
+  </nav>
+
+  <div class="container" id='reviews'>
+      <h3>My Reviews</h3>
+
+      <!-- <ul class="my-reviews">
+          <li *ngFor = "let bathroom of bathrooms">
+              class.selected]="bathroom === selectedBathroom"
+              (click)="onSelect(bathroom)">
+            <span class="badge">{{bathroom.id}}</span> {{bathroom.name}}
           </li>
-          <li class="nav-item">
-              <a class="nav-link" id="bathroom-link" href="../../../bathroom-index.html">Bathrooms</a>
-          </li>   
-          <li class="nav-item">
-            <a class="nav-link" id="reviews-link" href="#">My Reviews</a>
-          </li>         
       </ul>
-  </div>  
-</nav>
+
+      <div *ngIf="selectedBathroom">
+          <h2>{{selectedBathroom.name | uppercase}} Review</h2>
+          <div><span>id: </span>{{selectedBathroom.id}}</div>
+          <div>
+            <label>name: -->
+              <!-- <input [(ngModel)]="selectedBathroom.name" placeholder="name"/> -->
+            <!-- </label>
+          </div>
+      </div> -->
+      <div *ngIf="error">{{error}}</div>
+      <div *ngIf="success">{{success}}</div>
+    
+      <div id="theList">
+        <h2>The list</h2>
+        <ul>
+          <li *ngFor="let item of bathrooms">{{item.id}} | {{item.name}} </li>
+        </ul>
+      </div>
+  </div>
+
+</body>
+</html>
+
