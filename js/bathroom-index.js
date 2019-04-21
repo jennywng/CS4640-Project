@@ -61,20 +61,39 @@ function createBathroomDiv(id, title, desc, loc, rating, gender, fem, paper, air
 
 
 function getBathrooms() {
-    var $bathroomListEle = $("#bathroomlist");
-    
-    $.ajax({
-        url: 'php/get-bathrooms.php',
-        type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-            var bathrooms = data.all_bathrooms_data;
-            bathrooms.forEach((item) => {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this. status == 200) {
+            var $bathroomListEle = $("#bathroomlist");
+            // console.log(this.responseText);
+            var bathrooms = JSON.parse(this.responseText);
+            console.log(bathrooms.all_bathrooms_data);
+            bathrooms.all_bathrooms_data.forEach((item) => {
                 var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating, 
                     item.genderN, item.femP, item.paper, item.air, item.breast, item.diaper);
                 $bathroomListEle.append(bath);
             });
         }
-    }); 
+    };
+    xhr.open("POST", "php/get-bathrooms.php", true);
+    xhr.send();
 }
+
+// function getBathrooms() {
+//     var $bathroomListEle = $("#bathroomlist");
+    
+//     $.ajax({
+//         url: 'php/get-bathrooms.php',
+//         type: 'POST',
+//         dataType: 'json',
+//         success: function(data) {
+//             var bathrooms = data.all_bathrooms_data;
+//             bathrooms.forEach((item) => {
+//                 var bath = createBathroomDiv(item.bID, item.title, item.description, item.location, item.avgRating, 
+//                     item.genderN, item.femP, item.paper, item.air, item.breast, item.diaper);
+//                 $bathroomListEle.append(bath);
+//             });
+//         }
+//     }); 
+// }
 
