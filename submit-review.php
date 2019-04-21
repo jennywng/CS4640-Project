@@ -27,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $file_size = $_FILES['upload']['size'];
         $target_dir = "uploads/";
 
-        echo "file_tmp_name: $file_tmp_name";
-        echo var_dump($_FILES);
-        echo $_FILES['upload']['error'];
+        // echo "file_tmp_name: $file_tmp_name";
+        // echo var_dump($_FILES);
+        // echo $_FILES['upload']['error'];
 
         $x = $target_dir . $file_name;
         if(rename($file_tmp_name, $target_dir.$file_name)) {
