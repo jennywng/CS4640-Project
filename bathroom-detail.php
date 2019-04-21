@@ -26,6 +26,20 @@
         <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#603cba">
         <meta name="theme-color" content="#ffffff">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script language="JavaScript" type="text/javascript">
+            $(document).ready(function(){
+                $('.carousel').carousel({
+                interval: 2000
+                })
+            });    
+        </script>
+
     </head>
 
 
@@ -66,6 +80,26 @@ if ($result -> num_rows > 0) {
 } else {
     echo 'No results';
 }
+
+
+$msg = null;
+$get_images = "SELECT R.imgURL
+FROM bathrooms B
+INNER JOIN reviews R ON R.bID = B.ID
+WHERE B.ID=$bID AND R.imgURL IS NOT NULL";
+
+$result = $conn->query($get_images);
+
+if ($result -> num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        extract($row);
+        $images[] = $imgURL;
+    }
+} else {
+    $msg = 'No results';
+}
+
+
 
 $get_reviews = "SELECT R.ID, R.title, R.uID, R.rDesc, R.rating, U.firstname, U.lastname, U.profilepic 
 FROM bathrooms B
@@ -151,7 +185,8 @@ $conn->close();
             </div>
 
         
-            <br> 
+            <br>
+            <?php if ($msg == 'No results') {?> 
             <div id="bathroomPics" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#bathroomPics" data-slide-to="0" class="active"></li>
@@ -178,6 +213,43 @@ $conn->close();
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
+            <?php } else { ?>
+            
+            <div id="bathroomPics" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                  <?php $a = 0; ?>
+              <?php for($i = 0; $i < sizeof($images); $i++) {?>
+                    <li data-target="#bathroomPics" data-slide-to="<?php echo $i;?>" class="<?php if($a == 0) {echo "active";}?>"></li>
+              <?php $a++;
+            } ?>
+              </ol>
+
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="<?php echo $images[0]; ?>" class="d-block w-100" alt="pic1">
+                    </div>
+                    <?php for($j = 1; $j < sizeof($images); $j++) {
+                    ?>
+                    <div class="carousel-item">
+                        <img src="<?php echo $images[$j]; ?>" class="d-block w-100" alt="pic1">
+                    </div>
+                    <?php } ?>
+                </div>
+
+                <a class="carousel-control-prev" href="#bathroomPics" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#bathroomPics" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            
+            <?php }?>
             <hr class="my-4">
         </div>
 
@@ -215,12 +287,19 @@ $conn->close();
         </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
         <script src="js/submitReview.js"></script>
-        <script src="js/carousel.js"></script>
+
+        <!-- <script language="JavaScript" type="text/javascript">
+            $(document).ready(function(){
+                $('.carousel').carousel({
+                interval: 2000
+                })
+            });    
+        </script> -->
 
     </body>
 
