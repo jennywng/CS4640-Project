@@ -9,10 +9,12 @@ import { BathroomService } from './bathroom.service';
   styleUrls: ['./app.component.css']
 })
 
+
 export class AppComponent implements OnInit{
   bathrooms: Bathroom[];
   error = '';
   success = '';
+  title = 'Flushd';
         
   constructor(private bathroomService: BathroomService) {
   }
