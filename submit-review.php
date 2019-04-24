@@ -177,6 +177,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <meta charset="utf-8">
     
+
+        <title>Flushd</title>
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
             
             <!-- make browser window responsive -->
@@ -221,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <a class="nav-link" id="bathroom-link" href="bathroom-index.html">Bathrooms</a>
                     </li>   
                     <li class="nav-item">
-                      <a class="nav-link" id="reviews-link" href="#">My Reviews</a>
+                      <a class="nav-link" id="reviews-link" href="http://localhost:4200">My Reviews</a>
                     </li>         
                 </ul>
             </div>  

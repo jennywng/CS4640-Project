@@ -115,6 +115,8 @@
     
         <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
             
+        <title>Flushd</title>
+        
         <!-- make browser window responsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
             
