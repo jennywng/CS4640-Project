@@ -4,20 +4,34 @@
 <div class="container" id='reviews'>
     <h3>My Reviews</h3>
 
+    <hr class="my-4">
+
     <div *ngIf="error">{{error}}</div>
 
-    {{ myData | json }}
-    <!-- <div *ngIf="myData.length">
-      <ul>
-        <li *ngFor="let r of myData">
-            {{ r }}
-        </li>
-      </ul>
-    </div> -->
-    
+    <div *ngIf="myReviews.length">
+      <div class="review"  *ngFor="let r of myReviews">
+        <div class="media">
+
+          <img *ngIf="r.img" src="{{ r.img }}" 
+          style="width: 10rem; height: 10rem;" class="align-self-start mr-3 image-fluid" alt="...">
+
+          <img *ngIf="!r.img" src="http://localhost/CS4640-Project/images/defaulticon.png" 
+          style="width: 10rem; height: 10rem;" class="align-self-start mr-3 image-fluid" alt="...">
+
+          <div class="media-body">
+              <h5 class="mt-0">{{ r.title }}</h5>
+              <span class="fas fa-poo checked"></span><span class="usr-rating"> {{ r.rating }} </span>
+              <p>{{ r.rDesc }}</p>
+          </div>
+        </div>
+        <hr class="my-4">
+    </div>
+
+    {{ myReviews }}
 
 
     <h3>Search for Reviews by Person</h3>
+    <hr class="my-4">
 
     <!-- <form #reviewForm="ngForm">
         <div class="form-group">
