@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $text = (string) $_POST['review-text'];
     $rating = (int) $_POST['poo'];
 
-    if (isset($_FILES['upload'])) {
+    if (strlen($_FILES['upload']['name']) > 0 ) {
         $file_name = $userID . $_FILES['upload']['name'];
         $file_type = $_FILES['upload']['type'];
         $file_tmp_name = $_FILES['upload']['tmp_name'];
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $file_size = $_FILES['upload']['size'];
         $target_dir = "uploads/";
 
-        // echo "file_tmp_name: $file_tmp_name";
+        echo "file_tmp_name: $file_tmp_name";
         // echo var_dump($_FILES);
         // echo $_FILES['upload']['error'];
 
@@ -59,8 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		}
     } else {
         // submit review without picture
-        $q = "INSERT INTO reviews (uID, bID, title, rDesc, rating) VALUES 
-        ($userID, $bathID, '$title', '$text', $rating)";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "flushd";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn -> connect_error) {
+            die("Unable to connect to DB: " . $conn -> connect_error);
+        }
+
+        $q = "INSERT INTO reviews (uID, bID, title, rDesc, rating, imgURL) VALUES 
+        ($userID, $bathID, '$title', '$text', $rating, null)";
         if ($conn->query($q) === TRUE) {
             $message =  "Review submitted.";
             require_once("php/average.php");
