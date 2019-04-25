@@ -60,6 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["uid"] = $id;
+                            setcookie('uid', $id, time() + (86400 * 30), "/");
                             $_SESSION["email"] = $email;
                             $_SESSION["firstname"] = $fname;
                             $_SESSION["lastname"] = $lname;

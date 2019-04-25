@@ -22,10 +22,10 @@ export class AppComponent implements OnInit{
   error = '';
   success = '';
   title = 'Flushd';
-  myData: Object;
-  otherData: Object;
 
-  reviews: string;
+  // myData: Object;
+
+  otherData: Object;
 
   myReviews: Review[] = [];
 
@@ -48,10 +48,8 @@ export class AppComponent implements OnInit{
   getMyReviews(data): void {
     this.http.get('http://localhost/CS4640-Project/php/get-my-reviews.php?uid='+ data).subscribe((data) => {
         console.log("Got data from backend", data);
-        this.reviews = JSON.stringify(data);
 
-        // console.log(JSON.parse(this.reviews));
-        this.myData = data;
+        // this.myData = data;
 
         let json = JSON.parse(JSON.stringify(data));
 
