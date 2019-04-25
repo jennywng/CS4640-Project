@@ -57,6 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		} else {
 			$message =  "File cannot be uploaded";
 		}
+    } else {
+        // submit review without picture
+        $q = "INSERT INTO reviews (uID, bID, title, rDesc, rating) VALUES 
+        ($userID, $bathID, '$title', '$text', $rating)";
+        if ($conn->query($q) === TRUE) {
+            $message =  "Review submitted.";
+            require_once("php/average.php");
+        } else {
+            $message =  "Error updating record: " . $conn->error;
+        }
+
     }
 }
 
