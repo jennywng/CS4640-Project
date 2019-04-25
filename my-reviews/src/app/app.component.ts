@@ -3,10 +3,17 @@ import { Bathroom } from './bathroom';
 import { BathroomService } from './bathroom.service';
 
 
+
+import { Reviewer} from './reviewer';
+import { CookieService} from 'ngx-cookie-service';
+// import { CookieService } from 'angular2-cookie/core';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [CookieService]
 })
 
 
@@ -15,13 +22,47 @@ export class AppComponent implements OnInit{
   error = '';
   success = '';
   title = 'Flushd';
+  myData: Object;
+  otherData: Object;
         
-  constructor(private bathroomService: BathroomService) {
+  constructor(private bathroomService: BathroomService, private http: HttpClient, private cookieService: CookieService) {
   }
         
   ngOnInit() {
-    this.getBathrooms();
+    // this.getBathrooms();
+    let id = this.getUserCookie();
+    console.log('id from cookie: ', id);
+    this.getMyReviews(id);
   }
+
+  getUserCookie() {
+    return this.cookieService.get('uid');
+  }
+
+  getMyReviews(data): void {
+    this.http.get('http://localhost/CS4640-Project/php/get-my-reviews.php?uid='+ data).subscribe((data) => {
+        console.log("Got data from backend", data);
+        this.myData = data;
+    }, (error) => {
+      console.log('Error', error);
+    })
+  }
+
+
+  getOtherReview(data): void {
+    console.log(data);
+    let params = JSON.stringify(data);
+    this.http.post('http://localhost/CS4640-Project/php/get-other-reviews.php', data).subscribe((data) => {
+      console.log('Other review data: ', data);
+      this.otherData = data;
+
+    }, (error) => {
+      console.log('Error', error);
+    })
+  }
+
+
+
         
   getBathrooms(): void {
     this.bathroomService.getAll().subscribe(

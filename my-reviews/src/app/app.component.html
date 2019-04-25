@@ -1,35 +1,48 @@
 <!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
 
 
-  <div class="container" id='reviews'>
-      <h3>My Reviews</h3>
+<div class="container" id='reviews'>
+    <h3>My Reviews</h3>
 
-      <!-- <ul class="my-reviews">
-          <li *ngFor = "let bathroom of bathrooms">
-              class.selected]="bathroom === selectedBathroom"
-              (click)="onSelect(bathroom)">
-            <span class="badge">{{bathroom.id}}</span> {{bathroom.name}}
-          </li>
+    <div *ngIf="error">{{error}}</div>
+
+    {{ myData | json }}
+    <!-- <div *ngIf="myData.length">
+      <ul>
+        <li *ngFor="let r of myData">
+            {{ r }}
+        </li>
       </ul>
-
-      <div *ngIf="selectedBathroom">
-          <h2>{{selectedBathroom.name | uppercase}} Review</h2>
-          <div><span>id: </span>{{selectedBathroom.id}}</div>
-          <div>
-            <label>name: -->
-              <!-- <input [(ngModel)]="selectedBathroom.name" placeholder="name"/> -->
-            <!-- </label>
-          </div>
-      </div> -->
-      <div *ngIf="error">{{error}}</div>
-      <div *ngIf="success">{{success}}</div>
+    </div> -->
     
-      <div id="theList">
-        <h2>The list</h2>
-        <ul>
-          <li *ngFor="let item of bathrooms">{{item.id}} | {{item.name}} </li>
-        </ul>
-      </div>
-  </div>
+
+
+    <h3>Search for Reviews by Person</h3>
+
+    <!-- <form #reviewForm="ngForm">
+        <div class="form-group">
+            <label>Name: </label>
+            <input required 
+                   placeholder="i.e. Jenny"
+                   #name="ngModel" 
+                   [class.is-invalid]="name.invalid"
+                   [(ngModel)]="reviewerModel.name" type="text" class="form-control" name="name">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+        </div>
+        <button class="btn btn-primary" (click)="getOtherReview(reviewForm.value)">Search</button>
+    </form>
+ 
+
+    <h4>{{ orderForm.value }}'s Reviews</h4>
+    <div *ngIf="error">{{error}}</div>
+    <div *ngIf="myData.length">
+      <ul>
+        <li *ngFor="let r of myData">
+            {{ r }}
+        </li>
+      </ul>
+    </div> -->
+
+</div>
 
 
