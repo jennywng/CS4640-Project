@@ -1,0 +1,99 @@
+<!-- Jenny Wang jrw3mx and Amber Liu al7bf -->
+
+
+<div class="container" id='reviews'>
+    <h3>Submit a Bathroom</h3>
+  
+    <hr class="my-4">
+  
+    <div *ngIf="error">{{error}}</div>
+  
+    <form #bathroomForm="ngForm">
+        <div [ngClass]="form-group">
+            <label for="bathTitle">Bathroom Title: </label>
+            <input [(ngModel)]="bathroomModel.title" name="bathTitle" required placeholder="Clark Hall 1st Floor" >
+        </div>
+        <div [ngClass]="form-group">
+            <label for="bathTitle">Bathroom Description: </label>
+            <input name="bathTitle" required placeholder="Small 3-stall bathroom" >
+        </div>
+        <div [ngClass]="form-group">
+            <label for="bathTitle">Bathroom Location: </label>
+            <input name="bathTitle" required placeholder="123 McCormick Rd. Charlottesville, VA 22903" >
+        </div>
+
+        <div class="row">
+            <div class="col-4 form-group">
+                <input type="checkbox" class="form-check-input" id="genderCheck">
+                <label class="form-check-label" for="genderCheck">Gender Neutral</label>
+            </div>
+            <div class="col-4">
+                    <input type="checkbox" class="form-check-input" id="femCheck">
+                    <label class="form-check-label" for="femCheck">Feminine Products Available</label>
+            </div>
+            <div class="col-4">
+                    <input type="checkbox" class="form-check-input" id="airCheck">
+                    <label class="form-check-label" for="airCheck">Air Dryer</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                    <input type="checkbox" class="form-check-input" id="paperCheck">
+                    <label class="form-check-label" for="paperCheck">Paper Towels</label>
+            </div>
+            <div class="col-4">
+                    <input type="checkbox" class="form-check-input" id="breastCheck">
+                    <label class="form-check-label" for="breastCheck">Breast Feeding Area</label>
+            </div>
+            <div class="col-4">
+                    <input type="checkbox" class="form-check-input" id="diaperCheck">
+                    <label class="form-check-label" for="diaperCheck">Baby Diaper Change</label>
+            </div>                        
+        </div>
+
+        <button class="btn btn-primary" (click)="sendBathroomData(reviewForm.value)">Submit</button>
+    </form>
+
+    <hr class="my-4">
+
+    <div class="card">
+    <div class="media">
+        <div class="media-body">
+            <h5 *ngIf="bathroomModel.title != null; else elseBlock" class="mt-0">{{ bathroomModel.title }}</h5>
+            <ng-template #elseBlock><h5 class="mt-0">Bathroom Title</h5></ng-template>
+            <p>{{ bathroomModel.desc }}</p>
+            <p> {{ bathroomModel.location }} </p>
+        </div>
+        <hr class="my-4">
+    </div>
+    </div>
+
+    <br>
+    <!-- <form #reviewForm="ngForm">
+        <div class="form-group">
+            <label>Name: </label>
+            <input required 
+                   placeholder="i.e. Jenny"
+                   #name="ngModel" 
+                   [class.is-invalid]="name.invalid"
+                   [(ngModel)]="reviewerModel.name" type="text" class="form-control" name="name">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+        </div>
+        <button class="btn btn-primary" (click)="getOtherReview(reviewForm.value)">Search</button>
+    </form>
+  
+  
+    <h4>{{ orderForm.value }}'s Reviews</h4>
+    <div *ngIf="error">{{error}}</div>
+    <div *ngIf="myData.length">
+      <ul>
+        <li *ngFor="let r of myData">
+            {{ r }}
+        </li>
+      </ul>
+    </div> -->
+  
+  </div>
+  
+  
+  

@@ -1,6 +1,14 @@
 export class Bathroom{
-    constructor(
-        id: number,
-        name: string,
-    ){}
+    id: number;
+    title: string;
+    desc: string;
+    location: string;
+    genderTag: boolean;
+    femTag: boolean;
+    paperTag: boolean;
+    airTag: boolean;
+    breastTag: boolean;
+    diaperTag: boolean;
+
+    constructor(){}
 }
