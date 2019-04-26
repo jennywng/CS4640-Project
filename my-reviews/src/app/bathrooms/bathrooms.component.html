@@ -14,40 +14,40 @@
             <input [(ngModel)]="bathroomModel.title" name="bathTitle" required placeholder="Clark Hall 1st Floor" >
         </div>
         <div [ngClass]="form-group">
-            <label for="bathTitle">Bathroom Description: </label>
-            <input name="bathTitle" required placeholder="Small 3-stall bathroom" >
+            <label for="bathDesc">Bathroom Description: </label>
+            <input [(ngModel)]="bathroomModel.desc" name="bathDesc" required placeholder="Small 3-stall bathroom" >
         </div>
         <div [ngClass]="form-group">
             <label for="bathTitle">Bathroom Location: </label>
-            <input name="bathTitle" required placeholder="123 McCormick Rd. Charlottesville, VA 22903" >
+            <input [(ngModel)]="bathroomModel.location" name="bathLoc" required placeholder="123 McCormick Rd. Charlottesville, VA 22903" >
         </div>
 
         <div class="row">
-            <div class="col-4 form-group">
-                <input type="checkbox" class="form-check-input" id="genderCheck">
-                <label class="form-check-label" for="genderCheck">Gender Neutral</label>
+            <div class="col-sm-4 form-group">
+                <input [(ngModel)]="bathroomModel.genderTag" name="genderCheck" type="checkbox" class="form-check-input" id="genderCheck">
+                <label class="form-check-label" for="genderCheck"><i class="fas fa-transgender-alt"> </i>Gender Neutral</label>
             </div>
-            <div class="col-4">
-                    <input type="checkbox" class="form-check-input" id="femCheck">
-                    <label class="form-check-label" for="femCheck">Feminine Products Available</label>
+            <div class="col-sm-4">
+                    <input [(ngModel)]="bathroomModel.femTag" name="femCheck" type="checkbox" class="form-check-input" id="femCheck">
+                    <label class="form-check-label" for="femCheck"><i class="fas fa-female"></i> Feminine Products</label>
             </div>
-            <div class="col-4">
-                    <input type="checkbox" class="form-check-input" id="airCheck">
-                    <label class="form-check-label" for="airCheck">Air Dryer</label>
+            <div class="col-sm-4">
+                    <input [(ngModel)]="bathroomModel.airTag" name="airCheck" type="checkbox" class="form-check-input" id="airCheck">
+                    <label class="form-check-label" for="airCheck"><i class="fas fa-wind"></i> Air Dryer</label>
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
-                    <input type="checkbox" class="form-check-input" id="paperCheck">
-                    <label class="form-check-label" for="paperCheck">Paper Towels</label>
+            <div class="col-sm-4">
+                    <input [(ngModel)]="bathroomModel.paperTag" name="paperCheck" type="checkbox" class="form-check-input" id="paperCheck">
+                    <label class="form-check-label" for="paperCheck"><i class="fas fa-toilet-paper"></i> Paper Towels</label>
             </div>
-            <div class="col-4">
-                    <input type="checkbox" class="form-check-input" id="breastCheck">
-                    <label class="form-check-label" for="breastCheck">Breast Feeding Area</label>
+            <div class="col-sm-4">
+                    <input [(ngModel)]="bathroomModel.breastTag" name="breastCheck" type="checkbox" class="form-check-input" id="breastCheck">
+                    <label class="form-check-label" for="breastCheck"><i class="fas fa-utensils"></i> Breast Feeding Area</label>
             </div>
-            <div class="col-4">
-                    <input type="checkbox" class="form-check-input" id="diaperCheck">
-                    <label class="form-check-label" for="diaperCheck">Baby Diaper Change</label>
+            <div class="col-sm-4">
+                    <input [(ngModel)]="bathroomModel.diaperTag" name="diaperCheck" type="checkbox" class="form-check-input" id="diaperCheck">
+                    <label class="form-check-label" for="diaperCheck"><i class="fas fa-baby"></i> Baby Diaper Change</label>
             </div>                        
         </div>
 
@@ -59,10 +59,23 @@
     <div class="card">
     <div class="media">
         <div class="media-body">
-            <h5 *ngIf="bathroomModel.title != null; else elseBlock" class="mt-0">{{ bathroomModel.title }}</h5>
-            <ng-template #elseBlock><h5 class="mt-0">Bathroom Title</h5></ng-template>
-            <p>{{ bathroomModel.desc }}</p>
-            <p> {{ bathroomModel.location }} </p>
+            <h5 *ngIf="bathroomModel.title != null; else elseBlock1" class="mt-0">{{ bathroomModel.title }}</h5>
+            <ng-template #elseBlock1><h5 class="mt-0">Bathroom Title</h5></ng-template>
+
+            <p *ngIf="bathroomModel.desc != null; else elseBlock2">{{ bathroomModel.desc }}</p>
+            <ng-template #elseBlock2><p>A short description about the bathroom</p></ng-template>
+
+            <p *ngIf="bathroomModel.location != null; else elseBlock3">{{ bathroomModel.location }} </p>
+            <ng-template #elseBlock3><p>123 Sesame St., Virginia 22903</p></ng-template>
+
+            <div>
+                <span *ngIf="bathroomModel.genderTag"><i class="fas fa-transgender-alt"></i></span>
+                <span *ngIf="bathroomModel.femTag"><i class="fas fa-female"></i></span>
+                <span *ngIf="bathroomModel.airTag"><i class="fas fa-wind"></i></span>
+                <span *ngIf="bathroomModel.paperTag"><i class="fas fa-toilet-paper"></i></span>
+                <span *ngIf="bathroomModel.breastTag"><i class="fas fa-utensils"></i></span>
+                <span *ngIf="bathroomModel.diaperTag"><i class="fas fa-baby"></i></span>
+            </div>
         </div>
         <hr class="my-4">
     </div>
