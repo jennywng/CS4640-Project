@@ -60,8 +60,8 @@
 
     <hr class="my-4">
 
-    <div class="card" [ngStyle]='{"border-radius": "5px"}'>
-    <div class="media">
+    <div class="card" [ngStyle]='{"border-radius": "3px"}'>
+    <div class="media" style="padding: 5px">
         <div class="media-body">
             <h5 *ngIf="bathroomModel.title != null; else elseBlock1" class="mt-0">{{ bathroomModel.title }}</h5>
             <ng-template #elseBlock1><h5 class="mt-0">Bathroom Title</h5></ng-template>
@@ -73,12 +73,12 @@
             <ng-template #elseBlock3><p>123 Sesame St., Virginia 22903</p></ng-template>
 
             <div>
-                <span *ngIf="bathroomModel.genderTag"><i class="fas fa-transgender-alt"></i></span>
-                <span *ngIf="bathroomModel.femTag"><i class="fas fa-female"></i></span>
-                <span *ngIf="bathroomModel.airTag"><i class="fas fa-wind"></i></span>
-                <span *ngIf="bathroomModel.paperTag"><i class="fas fa-toilet-paper"></i></span>
-                <span *ngIf="bathroomModel.breastTag"><i class="fas fa-utensils"></i></span>
-                <span *ngIf="bathroomModel.diaperTag"><i class="fas fa-baby"></i></span>
+                <span *ngIf="bathroomModel.genderTag" style="padding-left: 5px; padding-right: 10px" ><i class="fas fa-transgender-alt"></i></span>
+                <span *ngIf="bathroomModel.femTag"style="padding: 10px"  ><i class="fas fa-female"></i></span>
+                <span *ngIf="bathroomModel.airTag" style="padding: 10px" ><i class="fas fa-wind"></i></span>
+                <span *ngIf="bathroomModel.paperTag" style="padding: 10px"><i class="fas fa-toilet-paper"></i></span>
+                <span *ngIf="bathroomModel.breastTag" style="padding: 10px"><i class="fas fa-utensils"></i></span>
+                <span *ngIf="bathroomModel.diaperTag" style="padding: 10px"><i class="fas fa-baby"></i></span>
             </div>
         </div>
         <hr class="my-4">
