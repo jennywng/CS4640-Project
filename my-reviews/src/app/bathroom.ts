@@ -3,12 +3,12 @@ export class Bathroom{
     title: string;
     desc: string;
     location: string;
-    genderTag: boolean;
-    femTag: boolean;
-    paperTag: boolean;
-    airTag: boolean;
-    breastTag: boolean;
-    diaperTag: boolean;
+    genderTag: boolean = false;
+    femTag: boolean = false;
+    paperTag: boolean = false;
+    airTag: boolean = false;
+    breastTag: boolean = false;
+    diaperTag: boolean = false;
 
     constructor(){}
 }

@@ -18,14 +18,34 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 export class BathroomsComponent implements OnInit {
 
   bathroomModel = new Bathroom();
+  message: object;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  sendBathroomData(data) {
 
+
+  sendBathroomData(data) {
+    console.log(data);
+    this.http.post('http://localhost/CS4640-Project/php/new-bathroom.php', data).subscribe((data) => {
+      this.message = data;
+      console.log(this.message);
+    }, (error) => {
+      console.log('Error: ', error);
+    });
   }
+
+
+  // getOtherReview(data): void {
+  //   console.log(data);
+  //   let params = JSON.stringify(data);
+  //   this.http.post('http://localhost/CS4640-Project/php/get-other-reviews.php', data).subscribe((data) => {
+  //     this.message = data;
+  //   }, (error) => {
+  //     console.log('Error', error);
+  //   })
+  // }
 
 }

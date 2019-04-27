@@ -63,21 +63,21 @@ export class ReviewsComponent implements OnInit {
         return this.myReviews;
     }, (error) => {
       console.log('Error', error);
-    })
+    });
   }
 
 
 
-  getOtherReview(data): void {
-    console.log(data);
-    let params = JSON.stringify(data);
-    this.http.post('http://localhost/CS4640-Project/php/get-other-reviews.php', data).subscribe((data) => {
-      console.log('Other review data: ', data);
-      this.otherData = data;
+  // getOtherReview(data): void {
+  //   console.log(data);
+  //   let params = JSON.stringify(data);
+  //   this.http.post('http://localhost/CS4640-Project/php/get-other-reviews.php', data).subscribe((data) => {
+  //     console.log('Other review data: ', data);
+  //     this.otherData = data;
 
-    }, (error) => {
-      console.log('Error', error);
-    })
-  }
+  //   }, (error) => {
+  //     console.log('Error', error);
+  //   })
+  // }
 
 }
